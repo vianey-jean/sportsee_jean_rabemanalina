@@ -1,0 +1,25 @@
+
+.nav {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 30px;
+  height: 91px;
+  
+  &__menu__link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+
+    &__active {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      color: rgb(180, 180, 180);
+    }
+  }
+}
