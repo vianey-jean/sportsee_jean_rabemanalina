@@ -4,6 +4,7 @@ import SideBar from "../compenents/sideBar";
 import Home from '../pages/home';
 import Error from '../pages/error';
 import UserMocked from '../pages/userMocked';
+import UserApi from '../pages/userApi';
 
 export const routes = [
     {
@@ -17,6 +18,10 @@ export const routes = [
             {
                 path: "/UserMocked/:id",
                 element: <UserMocked />,
+            },
+            {
+                path: "/User/:id",
+                element: <UserApi />,
             },
             {
                 path: "*",

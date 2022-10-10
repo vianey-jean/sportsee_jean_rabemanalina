@@ -7,11 +7,7 @@ import {
 import PropTypes from 'prop-types'
 import './_score.scss'
 
-/**
- * Component - RadialChart Graph of todayScrore
- * @param {number} userScore - The score of the user
- * @returns {React.ReactElement} JSX.Element - Graph of score
- */
+
 function Score({ userScore }) {
   const scorePercentage = [{ value: userScore * 100 }]
   const newScore = userScore * 100
