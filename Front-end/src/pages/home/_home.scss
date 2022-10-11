@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+   
 }
 
 .homeSection {
@@ -11,12 +12,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-
     &__userNav{
         &__link{
             text-decoration: none;
-            color: black;
-            background-color: grayscale($color: #b7b7b7);
+            color: white;
+            background-color: #d30707;
             border-radius: 30px;
             font-weight: 500;
             font-size: 24px;
