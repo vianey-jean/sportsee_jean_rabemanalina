@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sportsee_jean_rabemanalina/static/css/main.5a8f3ac1.css",
-    "main.js": "/sportsee_jean_rabemanalina/static/js/main.dc204c8b.js",
+    "main.css": "/sportsee_jean_rabemanalina/static/css/main.5b9ee9c2.css",
+    "main.js": "/sportsee_jean_rabemanalina/static/js/main.e8323cf0.js",
     "static/media/avatarHomme.png": "/sportsee_jean_rabemanalina/static/media/avatarHomme.c8950e9864bba405ea41.png",
     "static/media/avatarFemme.png": "/sportsee_jean_rabemanalina/static/media/avatarFemme.38874077d3cd971ff947.png",
     "static/media/logo_sportsee.svg": "/sportsee_jean_rabemanalina/static/media/logo_sportsee.3763aa8b43f1b1924574b54323547aff.svg",
@@ -14,11 +14,11 @@
     "index.html": "/sportsee_jean_rabemanalina/index.html",
     "static/media/calories.svg": "/sportsee_jean_rabemanalina/static/media/calories.25fef86ed5860200bdf90f9cd185e1e3.svg",
     "static/media/force.svg": "/sportsee_jean_rabemanalina/static/media/force.4fe7fb9fe3554121b3d42dcb489eefd0.svg",
-    "main.5a8f3ac1.css.map": "/sportsee_jean_rabemanalina/static/css/main.5a8f3ac1.css.map",
-    "main.dc204c8b.js.map": "/sportsee_jean_rabemanalina/static/js/main.dc204c8b.js.map"
+    "main.5b9ee9c2.css.map": "/sportsee_jean_rabemanalina/static/css/main.5b9ee9c2.css.map",
+    "main.e8323cf0.js.map": "/sportsee_jean_rabemanalina/static/js/main.e8323cf0.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a8f3ac1.css",
-    "static/js/main.dc204c8b.js"
+    "static/css/main.5b9ee9c2.css",
+    "static/js/main.e8323cf0.js"
   ]
 }
