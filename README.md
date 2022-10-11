@@ -9,7 +9,7 @@
 
 ![logo](src/assets/logo_sportsee.svp)
 
-## Presentation
+### Presentation
 
 SportSee project is an application for sportive people that want to follow their daily progress through analytics dashboard.
 
@@ -23,29 +23,29 @@ SportSee project is an application for sportive people that want to follow their
 - [React-router-dom(**version 18.2.0**)](https://en.reactjs.org/)
 - [React-dom(**version 18.2.0**)](https://en.reactjs.org/)
 - [sass (**version 1.55.0**)](https://sass-lang.com/install)
-- VsCode
+- [VsCode](https://code.visualstudio.com/)
 
 If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
 
-## Installing the app
+### Installing the app
 - Forke and clone the repository : https://github.com/vianey-jean/sportsee_jean_rabemanalina.git
-
+---
 - Back-end :
   open a new terminal and run `cd Back-end` command,
   then run `npm install` ans `npm start` command
   the backend will open: http://localhost:3000
-
-  - Front-End:
+---
+- Front-End:
   open a new terminal and run `cd Front-end` command,
   then run `npm install` ans `npm start` command
 the application will open: http://localhost:3001
 
-## Author
+### Author
 - Jean Marie Vianey RABEMANALINA
 
 ---
 
-## Delivrable:
+### Delivrable:
 
 [React app Code](https://github.com/vianey-jean/sportsee_jean_rabemanalina.git)  
 [Github-Page Demo](https://vianey-jean.github.io/sportsee_jean_rabemanalina/)  
