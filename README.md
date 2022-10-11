@@ -7,7 +7,7 @@
 
 ---
 
-![logo](Front-end/src/assets/logo_sportsee.svg)
+![logo](src/assets/logo_sportsee.svp)
 
 ### Presentation
 
@@ -25,23 +25,19 @@ SportSee project is an application for sportive people that want to follow their
 - [sass (**version 1.55.0**)](https://sass-lang.com/install)
 - [VsCode](https://code.visualstudio.com/)
 
-If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
-
----
 ### Installing the app
 - Forke and clone the repository : https://github.com/vianey-jean/sportsee_jean_rabemanalina.git
 ---
 - Back-end :
-  open a new terminal and run `cd Back-end` command,
-  then run `npm install` ans `npm start` command
-  the backend will open: http://localhost:3000
+- open a new terminal and run `cd Back-end` command,
+- then run `npm install` ans `npm start` command
+- the backend will open: http://localhost:3000
 ---
 - Front-End:
-  open a new terminal and run `cd Front-end` command,
-  then run `npm install` ans `npm start` command
-the application will open: http://localhost:3001
+- open a new terminal and run `cd Front-end` command,
+- then run `npm install` ans `npm start` command
+- the application will open: http://localhost:3001
 
----
 ### Author
 - Jean Marie Vianey RABEMANALINA
 
@@ -49,6 +45,6 @@ the application will open: http://localhost:3001
 
 ### Delivrable:
 
-[React app Code](https://github.com/vianey-jean/sportsee_jean_rabemanalina.git)  
-[Github-Page Demo](https://vianey-jean.github.io/sportsee_jean_rabemanalina/)  
+- [React app Code](https://github.com/vianey-jean/sportsee_jean_rabemanalina.git)  
+- [Github-Page Demo](https://vianey-jean.github.io/sportsee_jean_rabemanalina/)  
 
