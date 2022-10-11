@@ -27,6 +27,7 @@ SportSee project is an application for sportive people that want to follow their
 
 If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
 
+---
 ### Installing the app
 - Forke and clone the repository : https://github.com/vianey-jean/sportsee_jean_rabemanalina.git
 ---
@@ -40,6 +41,7 @@ If you are working with several versions of NodeJS, we recommend you install [nv
   then run `npm install` ans `npm start` command
 the application will open: http://localhost:3001
 
+---
 ### Author
 - Jean Marie Vianey RABEMANALINA
 
