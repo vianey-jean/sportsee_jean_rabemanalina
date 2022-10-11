@@ -7,7 +7,7 @@
 
 ---
 
-![logo](src/assets/logo_sportsee.svp)
+![logo](src/assets/logo_sportsee.svg)
 
 ### Presentation
 
