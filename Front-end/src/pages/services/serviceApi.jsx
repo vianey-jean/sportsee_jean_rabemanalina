@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+/**
+ * get USER_MAIN_DATA from API
+ * @param {Number} id
+ * @returns Object
+ */
 
 
 export async function getUserData({ id }) {
@@ -11,6 +16,11 @@ export async function getUserData({ id }) {
   }
 }
 
+/**
+ * get USER_ACTIVITY from API
+ * @param {Number} id
+ * @returns Object
+ */
 
 export async function getActivity({ id }) {
   try {
@@ -23,6 +33,11 @@ export async function getActivity({ id }) {
   }
 }
 
+/**
+ * get USER_AVERAGE_SESSIONS from API
+ * @param {Number} id
+ * @returns Object
+ */
 
 export async function getAverageSession({ id }) {
   try {
@@ -35,6 +50,11 @@ export async function getAverageSession({ id }) {
   }
 }
 
+/**
+ * get USER_PERFORMANCE from API
+ * @param {Number} id
+ * @returns Object
+ */
 
 export async function getPerformance({ id }) {
   try {

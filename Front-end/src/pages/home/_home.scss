@@ -22,7 +22,18 @@
             font-size: 24px;
             padding: 15px 15px;
             margin: 10px 30px;
-        
+            
+            &__doe{
+                text-decoration: none;
+                color: white;
+                background-color: #c69494; 
+                border-radius: 30px;
+                font-weight: 500;
+                font-size: 24px;
+                padding: 15px 15px;
+                margin: 10px 30px;
+            
+            }
 
             &:hover {
                 transform: scale(1.05);
@@ -65,4 +76,40 @@
     "homeSection__userNav__link homeSection__userNav__link homeSection__userNav__link homeSection__userNav__link";
 
     grid-gap:0.2rem;
+}
+
+
+@media (max-width: 1216px) {
+    .homeSection{
+        display: flex;
+        flex-direction:unset;
+        &__userNav{
+            &__link{
+                
+                text-decoration: none;
+                color: white;
+                background-color: #d30707;
+                border-radius: 15px;
+                font-weight: 300;
+                font-size: 18px;
+                padding: 15px 15px;
+                margin: 5px 5px;
+                &__doe{
+                    text-decoration: none;
+                color: white;
+                background-color: #d30707;
+                border-radius: 15px;
+                font-weight: 300;
+                font-size: 18px;
+                padding: 15px 15px;
+                margin: 5px 5px;
+                }
+            }
+    }
+}
+    .profil img{
+        width: 50px;
+        height: 50px;
+       
+    }
 }

@@ -31,6 +31,12 @@ function Home() {
           <p>Cecilia API</p>
         </li>
       </Link>
+      <Link className="homeSection__userNav__link__doe" to="-UserMocked/20">
+        <li className = "profil">
+          <img src= {Homme} alt ="" />
+          <p>John Doe</p>
+        </li>
+      </Link>
     </section>
   )
 }
