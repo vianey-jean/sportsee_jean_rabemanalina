@@ -23,7 +23,7 @@ function UserMocked() {
     return idNum === item.id
   })
 
-  const userPrenom = USER_MAIN_DATA[user].userInfos.firstName
+  const userFirstName = USER_MAIN_DATA[user].userInfos.firstName
   const userActivity = USER_ACTIVITY[user].sessions
   const userSessionAverage = USER_AVERAGE_SESSIONS[user].sessions
   const userPerform = USER_PERFORMANCE[user].data
@@ -33,7 +33,7 @@ function UserMocked() {
 
   return (
     <section className="containerUser">
-      <UserHello userFirstName={userPrenom} />
+      <UserHello userFirstName={userFirstName} />
       <Activity userActivity = {userActivity} />
       <AverageSessions userSessionAverage={userSessionAverage} />
       <Perform userPerform={userPerform} />

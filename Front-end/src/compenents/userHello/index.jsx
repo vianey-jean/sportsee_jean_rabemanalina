@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import './_userHello.scss'
 
 
-function UserHello({ userPrenom }) {
+function UserHello({ userFirstName }) {
   return (
     <article className="userHello">
       <h1>
-        Bonjour <span>{userPrenom}</span>
+        Bonjour <span>{userFirstName}</span>
       </h1>
       <p>
         Félicitation ! Vous avez explosé vos objectifs hier
