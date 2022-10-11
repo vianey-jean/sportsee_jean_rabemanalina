@@ -12,16 +12,16 @@ function Header() {
           <img className="nav__logo" src={logo} alt="SportSee logo" />
         </NavLink>
 
-        <NavLink className="nav__menu__link" to={''}>
+        <NavLink className="nav__menu__link" to='/'>
           Accueil
         </NavLink>
-        <NavLink className="nav__menu__link"  >
+        <NavLink className="nav__menu__link"  to='/'>
           Profil
         </NavLink>
-        <NavLink className="nav__menu__link"  >
+        <NavLink className="nav__menu__link"  to='/'>
           Réglage
         </NavLink>
-        <NavLink className="nav__menu__link" >
+        <NavLink className="nav__menu__link" to='/'>
           Communauté
         </NavLink>
       </nav>

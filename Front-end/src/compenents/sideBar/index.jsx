@@ -11,16 +11,16 @@ function SideBar() {
  
   return (
     <nav className="sideNav">
-      <NavLink className="sideNav__link" >
+      <NavLink className="sideNav__link" to="/">
         <img className="nav__logo" src={yoga} alt="yoga" />
       </NavLink>
-      <NavLink className="sideNav__link" >
+      <NavLink className="sideNav__link" to="/">
         <img className="nav__logo" src={natation} alt="natation" />
       </NavLink>
-      <NavLink className="sideNav__link" >
+      <NavLink className="sideNav__link" to="/">
         <img className="nav__logo" src={cycle} alt="cycle" />
       </NavLink>
-      <NavLink className="sideNav__link" >
+      <NavLink className="sideNav__link" to="/">
         <img className="nav__logo" src={force} alt="force" />
       </NavLink>
       <p>Copiryght, SportSee 2022</p>
