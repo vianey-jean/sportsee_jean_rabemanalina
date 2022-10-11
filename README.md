@@ -47,5 +47,5 @@ SportSee project is an application for sportive people that want to follow their
 ### Delivrable:
 
 - ![React app Code](https://github.com/vianey-jean/sportsee_jean_rabemanalina.git)  
-- ![Github-Page Demo](https://vianey-jean.github.io/sportsee_jean_rabemanalina/)  
+- [Github-Page Demo](https://vianey-jean.github.io/sportsee_jean_rabemanalina/)  
 
