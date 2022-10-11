@@ -24,6 +24,7 @@ function SideBar() {
         <img className="nav__logo" src={force} alt="force" />
       </NavLink>
       <p>Copiryght, SportSee 2022</p>
+      <h6>RJMV</h6>
     </nav>
   )
 }

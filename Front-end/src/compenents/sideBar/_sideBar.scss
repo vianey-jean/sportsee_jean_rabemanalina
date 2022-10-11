@@ -5,7 +5,7 @@
     justify-content: flex-end;
     align-items: center;
     width: 10%;
-    
+    padding-top: 45px;
     
     &__link {
       padding-bottom: 20px;
@@ -20,8 +20,8 @@
     }
 
     & p {
-      margin-top:  230px;
-      margin-bottom: 59px;
+      margin-top:  150px;
+      margin-bottom: 50px;
         writing-mode: vertical-lr;
         transform: rotate(-180deg);
         font-size: 12px;
