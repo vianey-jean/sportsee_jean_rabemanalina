@@ -40,7 +40,7 @@ SportSee project is an application for sportive people that want to follow their
 - the application will open: http://localhost:3001
 
 ### Author
-- Jean Marie Vianey RABEMANALINA
+- [Jean Marie Vianey RABEMANALINA](https://github.com/vianey-jean)
 
 ---
 
