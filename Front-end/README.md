@@ -7,7 +7,7 @@
 
 ---
 
-![logo](src/assets/logo_sportsee.svg)
+![logo](src/assets/logo_sportsee.svp)
 
 ### Presentation
 
@@ -15,17 +15,16 @@ SportSee project is an application for sportive people that want to follow their
 
 ## Prerequisites
 
-- ![NodeJS (**version 16.17.1**)](https://nodejs.org/en/)
-- ![NPM (**version 8.19.2**)](https://www.npmjs.com/)
-- ![REACT (**version 18.2.0**)](https://en.reactjs.org/) 
-- ![Recharts (**version 2.1.14**)](https://recharts.org/en-US/ )
-- ![Axios (**version 1.1.2**)](https://axios-http.com/)
-- ![React-router-dom(**version 18.2.0**)](https://en.reactjs.org/)
-- ![React-dom(**version 18.2.0**)](https://en.reactjs.org/)
-- ![sass (**version 1.55.0**)](https://sass-lang.com/install)
-- ![VsCode](https://code.visualstudio.com/)
+- [NodeJS (**version 16.17.1**)](https://nodejs.org/en/)
+- [NPM (**version 8.19.2**)](https://www.npmjs.com/)
+- [REACT (**version 18.2.0**)](https://en.reactjs.org/) is recommanded to run charts correctly
+- [Recharts (**version 2.1.14**)](https://recharts.org/en-US/ )
+- [Axios (**version 1.1.2**)](https://axios-http.com/)
+- [React-router-dom(**version 18.2.0**)](https://en.reactjs.org/)
+- [React-dom(**version 18.2.0**)](https://en.reactjs.org/)
+- [sass (**version 1.55.0**)](https://sass-lang.com/install)
+- [VsCode](https://code.visualstudio.com/)
 
----
 ### Installing the app
 - Forke and clone the repository : https://github.com/vianey-jean/sportsee_jean_rabemanalina.git
 ---
@@ -40,12 +39,12 @@ SportSee project is an application for sportive people that want to follow their
 - the application will open: http://localhost:3001
 
 ### Author
-- ![Jean Marie Vianey RABEMANALINA](https://github.com/vianey-jean)
+- Jean Marie Vianey RABEMANALINA
 
 ---
 
 ### Delivrable:
 
-- ![React app Code](https://github.com/vianey-jean/sportsee_jean_rabemanalina.git)  
+- [React app Code](https://github.com/vianey-jean/sportsee_jean_rabemanalina.git)  
 - [Github-Page Demo](https://vianey-jean.github.io/sportsee_jean_rabemanalina/)  
 

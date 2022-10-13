@@ -7,9 +7,10 @@ import App from './App';
 
 /**
  * @file root folder of the application
- * @author Christelle Philippe
- * @see <a href="https://christelle74.github.io/PhilippeChristelle_12_SportSee/" target="_blank"> repo Git </a>
+ * @author Jean RABEMANALINA
+ * @see <a href="https://vianey-jean.github.io/sportsee_jean_rabemanalina/" target="_blank"> gh-pages </a>
  */
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

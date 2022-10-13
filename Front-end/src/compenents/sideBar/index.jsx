@@ -4,8 +4,17 @@ import yoga from '../../assets/yoga.svg'
 import natation from '../../assets/natation.svg'
 import cycle from '../../assets/cycle.svg'
 import force from '../../assets/force.svg'
-
 import './_sideBar.scss'
+
+/**
+ * Component - SideBar
+ * * Logos
+   * @param {yoga} yoga // yogaLogo
+   * @param {natation} natation// natationaLogo
+   * @param {cycle} cycle// cycleLogo
+   * @param {force} force// forceLogo
+ * @returns {React.ReactElement} JSX.Element - SideBar component
+ */
 
 function SideBar() {
  

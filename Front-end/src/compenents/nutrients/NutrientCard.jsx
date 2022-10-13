@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+/**
+ * @param {{icon : string, value: number, nutrientType: string, classNameIcone: string }} props nutrient data
+ * @returns {React.ReactElement} JSX.Element - all nutrient card
+ */
 
 function NutrientCard({ icon, value, nutrientType, classNameIcone }) {
   return (

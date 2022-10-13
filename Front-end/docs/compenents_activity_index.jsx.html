@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>compenents/activity/index.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSession">getAverageSession</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getUserData">getUserData</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#NutrientCard">NutrientCard</a></li><li><a href="global.html#Nutrients">Nutrients</a></li><li><a href="global.html#Perform">Perform</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserHello">UserHello</a></li><li><a href="global.html#UserMocked">UserMocked</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">compenents/activity/index.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  Legend,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+} from 'recharts'
+import PropTypes from 'prop-types'
+import './_dailyActivity.scss'
+
+/**
+ * Component - BarChart Graph of Daily activity
+ * @param {Object[]} userActivity user's physical activity data
+ * @param {String} userActivity[].day
+ * @param {Number} userActivity[].kilogram - array activity on kg
+ * @param {Number} userActivity[].calories - arry activity on kcal
+ * @returns {React.ReactElement} JSX.Element - physical activity chart 
+ * @see https://recharts.org/en-US/api/Barchart
+ */
+
+function Activity({ userActivity }) {
+  const data = userActivity.map((item) => {
+    return { ...item, day: item.day.split('')[9] }
+  })
+
+  return (
+    &lt;article className="dailyActivity">
+      &lt;h2>Activité quotidienne&lt;/h2>
+
+      &lt;ResponsiveContainer width="100%" height={320}>
+        &lt;BarChart
+          data={data}
+          margin={{ top: 0, right: 0, left: 10, bottom: 50 }}
+        >
+          &lt;CartesianGrid
+            strokeDasharray="2 2"
+            horizontal={true}
+            vertical={false}
+          />
+
+          &lt;XAxis
+            dataKey="day"
+            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }}
+            tickLine={false}
+            tickSize={16}
+            stroke="#DEDEDE"
+          />
+
+          &lt;YAxis
+            yAxisId={0}
+            dataKey="kilogram"
+            stroke="#9B9EAC"
+            orientation="right"
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }}
+            domain={['dataMin - 1', 'dataMax + 2']}
+          />
+          &lt;YAxis
+            yAxisId={1}
+            dataKey="calories"
+            hide={true}
+            domain={['dataMin - 100', 'dataMax + 100']}
+          />
+
+          &lt;Tooltip
+            itemStyle={{
+              color: 'white',
+              fontSize: 10,
+              fontWeight: 500,
+            }}
+            formatter={(value, name, unit) => [value, unit]}
+            labelStyle={{ display: 'none' }}
+            contentStyle={{
+              backgroundColor: '#E60000',
+            }}
+          />
+
+          &lt;Legend
+            verticalAlign="top"
+            align="right"
+            iconType="circle"
+            iconSize={8}
+            height={47}
+          />
+
+          &lt;Bar
+            yAxisId={0}
+            dataKey="kilogram"
+            fill="#282D30"
+            barSize={7}
+            radius={[3, 3, 0, 0]}
+            unit=" kg"
+            name="Poids (kg)"
+          />
+
+          &lt;Bar
+            yAxisId={1}
+            dataKey="calories"
+            fill="#E60000"
+            barSize={7}
+            radius={[3, 3, 0, 0]}
+            unit=" Kcal"
+            name="Calories brûlées (kCal)"
+          />
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/article>
+  )
+}
+
+Activity.propTypes = {
+  userActivity: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string,
+      kilogram: PropTypes.number,
+      calories: PropTypes.number,
+    })
+  ).isRequired,
+}
+
+export default Activity
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Oct 13 2022 10:26:11 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

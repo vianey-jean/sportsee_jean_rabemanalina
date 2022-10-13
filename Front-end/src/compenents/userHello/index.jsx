@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types'
 import './_userHello.scss'
 
+/**
+ * Function that returns the Welcome Title in Profil Page
+ * @param {string} userFirstName // Name's user
+ * @returns {React.ReactElement} JSX.Element - user's presentation
+ */
 
 function UserHello({ userFirstName }) {
   return (

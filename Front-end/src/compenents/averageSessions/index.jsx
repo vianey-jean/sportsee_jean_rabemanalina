@@ -10,7 +10,13 @@ import {
 import PropTypes from 'prop-types'
 import './_averageSession.scss'
 
-
+/**
+ * Component - LineChart Graph of session Longer
+ * @param {object[]} userSessionAverage user’s average session data
+ * @param {Number} userSessionAverage[].day Day of the week
+ * @param {Number} userSessionAverage[].sessionLength Session duration
+ * @returns {React.ReactElement} JSX.Element - average session chart
+ */
 
 function AverageSessions({ userSessionAverage }) {
   // Replace number day by good label

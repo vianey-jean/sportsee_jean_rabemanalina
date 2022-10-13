@@ -14,6 +14,10 @@ import {
   USER_PERFORMANCE,
 } from '../../datas/mockedUsersDatas'
 
+/**
+ * MOKED USER PAGE
+ * @returns {React.ReactElement} JSX.Element - the user main page with mocked data
+ */
 
 function UserMocked() {
   const { id } = useParams()

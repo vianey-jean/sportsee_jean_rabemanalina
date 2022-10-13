@@ -11,6 +11,15 @@ import {
 import PropTypes from 'prop-types'
 import './_dailyActivity.scss'
 
+/**
+ * Component - BarChart Graph of Daily activity
+ * @param {Object[]} userActivity user's physical activity data
+ * @param {String} userActivity[].day
+ * @param {Number} userActivity[].kilogram - array activity on kg
+ * @param {Number} userActivity[].calories - arry activity on kcal
+ * @returns {React.ReactElement} JSX.Element - physical activity chart 
+ * @see https://recharts.org/en-US/api/Barchart
+ */
 
 function Activity({ userActivity }) {
   const data = userActivity.map((item) => {

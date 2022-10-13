@@ -7,6 +7,16 @@ import PropTypes from 'prop-types'
 import './_nutrients.scss'
 
 
+/**
+ * @param {object} userKeyData - The different types of nutrients
+ * @param {number} userKeyData.calorieCount - Calorie type nutrient
+ * @param {number} userKeyData.proteinCount - Protein type nutrient
+ * @param {number} userKeyData.carbohydrateCount - Carbohyrate type nutrient
+ * @param {number} userKeyData.lipidCount - Lipide type nutrient
+ * @returns {React.ReactElement} JSX.Element - aside Nutrients containing the Nutrients cards
+ */
+
+
 function Nutrients({ userKeyData }) {
   return (
     <>

@@ -9,7 +9,10 @@ import Nutrients from '../../compenents/nutrients'
 import Loader from '../../compenents/loader'
 
 
-
+/**
+ * Function that returns the user page
+ * @returns {React.ReactElement} JSX.Element - the user main page with API data
+ */
 
 function User() {
   const { id } = useParams()

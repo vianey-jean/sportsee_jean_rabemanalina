@@ -5,6 +5,12 @@ import Home from '../pages/home';
 import Error from '../pages/error';
 import UserMocked from '../pages/userMocked';
 import UserApi from '../pages/userApi';
+import React from "react";
+
+/**
+ * Dom injector and creation of router
+ * @return routes
+ */
 
 export const routes = [
     {

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pages/userApi/index.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSession">getAverageSession</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getUserData">getUserData</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#NutrientCard">NutrientCard</a></li><li><a href="global.html#Nutrients">Nutrients</a></li><li><a href="global.html#Perform">Perform</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#User">User</a></li><li><a href="global.html#UserHello">UserHello</a></li><li><a href="global.html#UserMocked">UserMocked</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/userApi/index.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useParams } from 'react-router-dom'
+import { GetDatas } from '../services/getApi'
+import UserHello from '../../compenents/userHello'
+import Activity from '../../compenents/activity'
+import AverageSessions from '../../compenents/averageSessions'
+import Perform from '../../compenents/perform'
+import Score from '../../compenents/score'
+import Nutrients from '../../compenents/nutrients'
+import Loader from '../../compenents/loader'
+
+
+/**
+ * Function that returns the user page
+ * @returns {React.ReactElement} JSX.Element - the user main page with API data
+ */
+
+function User() {
+  const { id } = useParams()
+
+  const {
+    userData,
+    userActivity,
+    userAverageSession,
+    userPerformance,
+    userDataLoading,
+    userActivityLoading,
+    userAverageSessionLoading,
+    userPerformanceLoading,
+  } = GetDatas(id)
+
+  return (
+    &lt;section className="containerUser">
+      {userDataLoading ? (
+        &lt;div className="userHello">
+          &lt;p>Chargement du prénom...&lt;/p>
+          &lt;Loader />
+        &lt;/div>
+      ) : userData.firstName === undefined ? (
+        &lt;div className="userHello">
+          &lt;p>Name no available&lt;/p>
+        &lt;/div>
+      ) : (
+        &lt;UserHello userFirstName={userData.firstName} />
+      )}
+
+      {userActivityLoading ? (
+        &lt;div className="dailyActivity">
+          &lt;p>Chargement du rapport d'activité quotidienne...&lt;/p>
+          &lt;Loader />
+        &lt;/div>
+      ) : userActivity === undefined ? (
+        &lt;div className="dailyActivity">
+          &lt;p>Activity no available&lt;/p>
+        &lt;/div>
+      ) : (
+        &lt;Activity userActivity={userActivity} />
+      )}
+
+      {userAverageSessionLoading || userAverageSession === undefined ? (
+        &lt;div className="averageSessions">
+          &lt;p>Chargement des durées moyennes de sessions...&lt;/p>
+          &lt;Loader />
+        &lt;/div>
+      ) : userAverageSession === undefined ? (
+        &lt;div className="averageSessions">
+          &lt;p>Average sessions no available&lt;/p>
+        &lt;/div>
+      ) : (
+        &lt;AverageSessions userSessionAverage={userAverageSession} />
+      )}
+
+      {userDataLoading || userData.userScore === undefined ? (
+        &lt;div className="score">
+          &lt;p>Chargement du score...&lt;/p>
+          &lt;Loader />
+        &lt;/div>
+      ) : userData.userScore === undefined ? (
+        &lt;div className="score">
+          &lt;p>Score no available&lt;/p>
+        &lt;/div>
+      ) : (
+        &lt;Score userScore={userData.userScore} />
+      )}
+
+      {userDataLoading || userData.userKey === undefined ? (
+        &lt;div className="nutrient">
+          &lt;p>Chargement des donnés d'alimentation...&lt;/p>
+          &lt;Loader />
+        &lt;/div>
+      ) : userData.userKey === undefined ? (
+        &lt;div className="nutrient">
+          &lt;p>Nutrients no available&lt;/p>
+        &lt;/div>
+      ) : (
+        &lt;Nutrients userKeyData={userData.userKey} />
+      )}
+
+      {userPerformanceLoading || userPerformance === undefined ? (
+        &lt;div className="perform">
+          &lt;p>Chargement des données de performances...&lt;/p>
+          &lt;Loader />
+        &lt;/div>
+      ) : userPerformance === undefined ? (
+        &lt;div className="perform">
+          &lt;p>Performances no available&lt;/p>
+        &lt;/div>
+      ) : (
+        &lt;Perform userPerform={userPerformance} />
+      )}
+    &lt;/section>
+  )
+}
+
+export default User
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Thu Oct 13 2022 10:26:11 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
