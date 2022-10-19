@@ -1,3 +1,6 @@
+//import hooks de react (useState, useEffect)
+// import vient serviceAPI
+
 import { useState, useEffect } from 'react'
 import {
   getUserData,
@@ -7,7 +10,7 @@ import {
 } from './serviceApi'
 
 
-export function GetDatas(id) {
+export function GetDatas(id) { //mettre en tableau les valeur recu
   const [userData, setUserData] = useState([])
   const [userActivity, setUserActivity] = useState([])
   const [userAverageSession, setUserAverageSession] = useState([])
@@ -19,23 +22,23 @@ export function GetDatas(id) {
   const [userPerformanceLoading, setUserPerformanceLoading] = useState(true)
 
   useEffect(() => {
-    getUserData({ id }).then((data) => {
+    getUserData({ id }).then((data) => {  //on utilise les donné de id selectionné
       setUserData({
-        firstName: data.data.userInfos.firstName,
-        userKey: data.data.keyData,
-        userScore: data.data.todayScore || data.data.score,
+        firstName: data.data.userInfos.firstName, //prénom
+        userKey: data.data.keyData, //keydata
+        userScore: data.data.todayScore || data.data.score,  //todayscore ou score
       })
       setUserDataLoading(false)
     })
-    getActivity({ id }).then((data) => {
+    getActivity({ id }).then((data) => {  //donné activity
       setUserActivity(data.data.sessions)
       setUserActivityLoading(false)
     })
-    getAverageSession({ id }).then((data) => {
+    getAverageSession({ id }).then((data) => {  //donné du averagesession
       setUserAverageSession(data.data.sessions)
       setUserAverageSessionLoading(false)
     })
-    getPerformance({ id }).then((data) => {
+    getPerformance({ id }).then((data) => {  //donné perform
       setUserPerformance(data.data.data)
       setUserPerformanceLoading(false)
     })

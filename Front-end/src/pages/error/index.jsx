@@ -1,3 +1,5 @@
+//import react et link
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './_error.scss'
@@ -9,10 +11,10 @@ import './_error.scss'
 
 function Error() {
   return (
-    <section className="error">
+    <section className="error"> 
       <h1>Erreur 404</h1>
       <h2> Oups! La page que vous demandez n'existe pas</h2>
-      <NavLink to={process.env.PUBLIC_URL + '/'}>Retourner sur la page d'accueil</NavLink>
+      <NavLink to={process.env.PUBLIC_URL + '/'}>Retourner sur la page d'accueil</NavLink>  {/**lien vers home */}
     </section>
   )
 }

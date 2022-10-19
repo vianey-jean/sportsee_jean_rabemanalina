@@ -4,9 +4,9 @@ import {
   PolarAngleAxis,
   Radar,
   ResponsiveContainer,
-} from 'recharts'
-import PropTypes from 'prop-types'
-import './_perform.scss'
+} from 'recharts'  //import Recharts
+import PropTypes from 'prop-types'  //import proptypes
+import './_perform.scss'  //import scss
 
 
 /**
@@ -19,7 +19,7 @@ import './_perform.scss'
 
 function Perform({ userPerform }) {
   // REPLACE NUMBER DATA BY GOOD LABEL
-  const kindName = [
+  const kindName = [ //mettre dans tableau kindName les valeur dessous
     'Intensité',
     'Vitesse',
     'Force',
@@ -33,24 +33,24 @@ function Perform({ userPerform }) {
   })
 
   return (
-    <article className="perform">
-      <ResponsiveContainer width="100%" height={263}>
+    <article className="perform">  {/**mettre dans class perform */}
+      <ResponsiveContainer width="100%" height={263}> 
         <RadarChart data={data} cx="50%" cy="54%" outerRadius="70%">
-          <PolarGrid radialLines={false} />
+          <PolarGrid radialLines={false} /> {/**ligne radial fausse */}
           <PolarAngleAxis
             dataKey="kind"
-            tickSize={10}
+            tickSize={10} //taille tick
             tick={{
-              fill: 'white',
+              fill: 'white', //couleur en blanc
               fontSize: 12,
               fontWeight: 500,
             }}
           />
           <Radar
             dataKey="value"
-            stroke="#FF0101"
-            fill="#FF0101"
-            fillOpacity={0.7}
+            stroke="#FF0101" //couleur du trait 
+            fill="#FF0101"  //couleur font
+            fillOpacity={0.7}  //opacité
           />
         </RadarChart>
       </ResponsiveContainer>

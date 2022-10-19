@@ -1,3 +1,5 @@
+//import React et scss
+
 import React from "react"
  import './_loader.scss'
 
@@ -9,7 +11,7 @@ import React from "react"
 
 function Loader() {
   return (
-    <div className="lds-ripple">
+    <div className="lds-ripple"> {/**mettre dans div avec class lds-ripple */}
       <div></div>
       <div></div>
     </div>

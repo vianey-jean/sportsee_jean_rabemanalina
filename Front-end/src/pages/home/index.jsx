@@ -1,3 +1,5 @@
+//import scss, react, react-router-dom, image
+
 import './_home.scss'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -12,32 +14,32 @@ import Femme from '../../assets/avatarFemme.png'
 
 function Home() {
   return (
-    <section className="homeSection">
-      <Link className="homeSection__userNav__link" to="UserMocked/12">
+    <section className="homeSection"> 
+      <Link className="homeSection__userNav__link" to="UserMocked/12"> {/**lien vers userMoked de id 12 */}
        <li className = "profil">
         <img src={Homme} alt=""  />
         <p>Karl Mock</p>
         </li>
       </Link>
-      <Link className="homeSection__userNav__link" to="UserMocked/18">
+      <Link className="homeSection__userNav__link" to="UserMocked/18">{/**lien vers userMoked de id 18 */} 
         <li className = "profil">
           <img src= {Femme} alt ="" />
           <p>Cecilia Mock</p>
         </li>
       </Link>
-      <Link className="homeSection__userNav__link" to="User/12">
+      <Link className="homeSection__userNav__link" to="User/12">{/**lien vers userAPI de id 12 */}
       <li className = "profil">
         <img src={Homme} alt=""  />
         <p>Karl API</p>
         </li>
       </Link>
-      <Link className="homeSection__userNav__link" to="User/18">
+      <Link className="homeSection__userNav__link" to="User/18"> {/**lien vers userAPI de id 18 */}
       <li className = "profil">
           <img src= {Femme} alt ="" />
           <p>Cecilia API</p>
         </li>
       </Link>
-      <Link className="homeSection__userNav__link__doe" to="-UserMocked/20">
+      <Link className="homeSection__userNav__link__doe" to="-UserMocked/20"> {/**lien vers user de id 20 */}
         <li className = "profil">
           <img src= {Homme} alt ="" />
           <p>John Doe</p>

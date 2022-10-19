@@ -1,3 +1,5 @@
+//import images svg, proptypes et scss 
+
 import caloriesIcon from '../../assets/calories.svg'
 import proteinIcon from '../../assets/protein.svg'
 import carbsIcon from '../../assets/carbs.svg'
@@ -20,29 +22,29 @@ import './_nutrients.scss'
 function Nutrients({ userKeyData }) {
   return (
     <>
-      <NutrientCard
-        classNameIcone="caloriesIcon"
-        icon={caloriesIcon}
-        value={userKeyData.calorieCount}
-        nutrientType={'calories'}
+      <NutrientCard  
+        classNameIcone="caloriesIcon" //class caloriesIcons
+        icon={caloriesIcon}  //images svg calories
+        value={userKeyData.calorieCount}  //données calories
+        nutrientType={'calories'} //type
       />
       <NutrientCard
-        classNameIcone="proteinIcon"
-        icon={proteinIcon}
-        value={userKeyData.proteinCount}
-        nutrientType={'protéines'}
+        classNameIcone="proteinIcon" //class proteinicon
+        icon={proteinIcon} //images svg proteins
+        value={userKeyData.proteinCount} //données du proteines
+        nutrientType={'protéines'} //types pretoines
       />
       <NutrientCard
-        classNameIcone="carbsIcon"
-        icon={carbsIcon}
-        value={userKeyData.carbohydrateCount}
-        nutrientType={'glucides'}
+        classNameIcone="carbsIcon" //class carbsicon
+        icon={carbsIcon} //images svg carbsicon
+        value={userKeyData.carbohydrateCount}  //données carb
+        nutrientType={'glucides'} //types glucides
       />
       <NutrientCard
-        classNameIcone="fatIcon"
-        icon={fatIcon}
-        value={userKeyData.lipidCount}
-        nutrientType={'lipides'}
+        classNameIcone="fatIcon" //class faticon
+        icon={fatIcon}  //images svg faticon
+        value={userKeyData.lipidCount} //donnée lipides
+        nutrientType={'lipides'}  //types lipides
       />
     </>
   )

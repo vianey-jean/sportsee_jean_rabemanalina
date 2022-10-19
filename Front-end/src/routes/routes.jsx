@@ -1,3 +1,5 @@
+//import react-router-dom, header, sidebar, home, error, userMocked, userApi et react
+
 import { Outlet } from "react-router-dom";
 import Header from '../compenents/header';
 import SideBar from "../compenents/sideBar";
@@ -15,19 +17,19 @@ import React from "react";
 export const routes = [
     {
         path: "/",
-        element: <Layout />,
+        element: <Layout />,  //par défaut c'est layout
         children: [
             {
-                index: true,
+                index: true, //dans le main, c'est par défaut c'est la page home
                 element: <Home />,
             },
             {
                 path: "/UserMocked/:id",
-                element: <UserMocked />,
+                element: <UserMocked />,  //on selectionne id par mocked
             },
             {
                 path: "/User/:id",
-                element: <UserApi />,
+                element: <UserApi />,  //on selection id par api
             },
             {
                 path: "*",
@@ -37,7 +39,7 @@ export const routes = [
     },
 ];
 
-function Layout () {
+function Layout () {  // par défaut, c'est header, sidebar et outlet qui change
     return (
 <>
     <Header />

@@ -1,3 +1,5 @@
+//import proptypes et scss
+
 import PropTypes from 'prop-types'
 import './_userHello.scss'
 
@@ -9,9 +11,9 @@ import './_userHello.scss'
 
 function UserHello({ userFirstName }) {
   return (
-    <article className="userHello">
+    <article className="userHello"> {/**class userhello */}
       <h1>
-        Bonjour <span>{userFirstName}</span>
+        Bonjour <span>{userFirstName}</span> { /**bonjour et le prénom du donné avec id qu'on a selectionné */}
       </h1>
       <p>
         Félicitation ! Vous avez explosé vos objectifs hier

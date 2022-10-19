@@ -1,3 +1,5 @@
+//import react-router-dom, getAPI, userhello, activity, averagesession, perform, score, nutrients et loader
+
 import { useParams } from 'react-router-dom'
 import { GetDatas } from '../services/getApi'
 import UserHello from '../../compenents/userHello'
@@ -17,7 +19,7 @@ import Loader from '../../compenents/loader'
 function User() {
   const { id } = useParams()
 
-  const {
+  const {  //recevoir les valeur vient de donné avec id selectionné
     userData,
     userActivity,
     userAverageSession,
@@ -30,7 +32,7 @@ function User() {
 
   return (
     <section className="containerUser">
-      {userDataLoading ? (
+      {userDataLoading ? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="userHello">
           <p>Chargement du prénom...</p>
           <Loader />
@@ -40,10 +42,10 @@ function User() {
           <p>Name no available</p>
         </div>
       ) : (
-        <UserHello userFirstName={userData.firstName} />
+        <UserHello userFirstName={userData.firstName} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userActivityLoading ? (
+      {userActivityLoading ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="dailyActivity">
           <p>Chargement du rapport d'activité quotidienne...</p>
           <Loader />
@@ -53,10 +55,10 @@ function User() {
           <p>Activity no available</p>
         </div>
       ) : (
-        <Activity userActivity={userActivity} />
+        <Activity userActivity={userActivity} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userAverageSessionLoading || userAverageSession === undefined ? (
+      {userAverageSessionLoading || userAverageSession === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="averageSessions">
           <p>Chargement des durées moyennes de sessions...</p>
           <Loader />
@@ -66,10 +68,10 @@ function User() {
           <p>Average sessions no available</p>
         </div>
       ) : (
-        <AverageSessions userSessionAverage={userAverageSession} />
+        <AverageSessions userSessionAverage={userAverageSession} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userDataLoading || userData.userScore === undefined ? (
+      {userDataLoading || userData.userScore === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="score">
           <p>Chargement du score...</p>
           <Loader />
@@ -79,10 +81,10 @@ function User() {
           <p>Score no available</p>
         </div>
       ) : (
-        <Score userScore={userData.userScore} />
+        <Score userScore={userData.userScore} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userDataLoading || userData.userKey === undefined ? (
+      {userDataLoading || userData.userKey === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="nutrient">
           <p>Chargement des donnés d'alimentation...</p>
           <Loader />
@@ -92,10 +94,10 @@ function User() {
           <p>Nutrients no available</p>
         </div>
       ) : (
-        <Nutrients userKeyData={userData.userKey} />
+        <Nutrients userKeyData={userData.userKey} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userPerformanceLoading || userPerformance === undefined ? (
+      {userPerformanceLoading || userPerformance === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="perform">
           <p>Chargement des données de performances...</p>
           <Loader />
@@ -105,7 +107,7 @@ function User() {
           <p>Performances no available</p>
         </div>
       ) : (
-        <Perform userPerform={userPerformance} />
+        <Perform userPerform={userPerformance} />  //si c'est connecter à API, montre la valeur
       )}
     </section>
   )

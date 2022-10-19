@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios'  //import axios
 
 /**
  * get USER_MAIN_DATA from API
@@ -6,12 +6,14 @@ import axios from 'axios'
  * @returns Object
  */
 
-
+/**
+ * utilisation axion avec get pour demande vers la base  et attentre le retour 
+ */
 export async function getUserData({ id }) {
   try {
-    const response = await axios.get(`http://localhost:3000/user/${id}`)
-    return response.data
-  } catch (error) {
+    const response = await axios.get(`http://localhost:3000/user/${id}`) // getUserdata: se connecte à localhost user avec id selectionné
+    return response.data //retour le donné ou
+  } catch (error) {  //erreur  
     console.error(error)
   }
 }
@@ -25,7 +27,7 @@ export async function getUserData({ id }) {
 export async function getActivity({ id }) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/${id}/activity`
+      `http://localhost:3000/user/${id}/activity` // getactivity: se connecte à localhost user avec id selectionné
     )
     return response.data
   } catch (error) {
@@ -42,7 +44,7 @@ export async function getActivity({ id }) {
 export async function getAverageSession({ id }) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/${id}/average-sessions`
+      `http://localhost:3000/user/${id}/average-sessions`  // getaveragessession: se connecte à localhost user avec id selectionné
     )
     return response.data
   } catch (error) {
@@ -59,8 +61,8 @@ export async function getAverageSession({ id }) {
 export async function getPerformance({ id }) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/${id}/performance`
-    )
+      `http://localhost:3000/user/${id}/performance`  // getperform: se connecte à localhost user avec id selectionné
+    ) 
     return response.data
   } catch (error) {
     console.error(error)

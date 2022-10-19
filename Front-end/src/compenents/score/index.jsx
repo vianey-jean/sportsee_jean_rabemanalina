@@ -3,9 +3,9 @@ import {
   RadialBar,
   ResponsiveContainer,
   PolarAngleAxis,
-} from 'recharts'
-import PropTypes from 'prop-types'
-import './_score.scss'
+} from 'recharts'  //import Recharts
+import PropTypes from 'prop-types' //import proptypes
+import './_score.scss'   //import scss
 
 /**
  * Component - RadialChart Graph of todayScrore
@@ -15,40 +15,40 @@ import './_score.scss'
 
 
 function Score({ userScore }) {
-  const scorePercentage = [{ value: userScore * 100 }]
-  const newScore = userScore * 100
+  const scorePercentage = [{ value: userScore * 100 }] //valeur du rond recu multiplie par cent
+  const newScore = userScore * 100 // valeur en chiffre recu multiplie par cent
 
   return (
     <article className="score">
       <h2>Score</h2>
 
-      <ResponsiveContainer width="100%" height={263}>
+      <ResponsiveContainer width="100%" height={263}>  
         <RadialBarChart
-          data={scorePercentage}
-          innerRadius={80}
-          barSize={10}
-          startAngle={80}
-          endAngle={440}
-          fill={'#FF0000'}
+          data={scorePercentage}  //donné score
+          innerRadius={80} //innerradius
+          barSize={10} //taille bar
+          startAngle={80} //angle
+          endAngle={440} //fin angle
+          fill={'#FF0000'}  //couleur du trait en rouge
         >
-          <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+          <PolarAngleAxis type="number" domain={[0, 100]} tick={false} /> 
           <RadialBar dataKey="value" cornerRadius={5} background />
           <text
             x="50%"
             y="45%"
-            textAnchor="middle"
+            textAnchor="middle"  //mettre au milieu
             fontSize="26"
             fontWeight="700"
-            fill="black"
+            fill="black" //couleur noir
           >
-            {newScore}%
+            {newScore}% {/**valeur en % */}
           </text>
           <text
             x="50%"
             y="55%"
-            textAnchor="middle"
+            textAnchor="middle" //mettre au milieu
             fontSize="16"
-            fill="gray"
+            fill="gray" //couleur gris
             fontWeight="500"
           >
             de votre objectif

@@ -6,8 +6,8 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-} from 'recharts'
-import PropTypes from 'prop-types'
+} from 'recharts'    //import Recharts pour graphique
+import PropTypes from 'prop-types'  //import Proptypes
 import './_averageSession.scss'
 
 /**
@@ -20,7 +20,7 @@ import './_averageSession.scss'
 
 function AverageSessions({ userSessionAverage }) {
   // Replace number day by good label
-  const weekdays = ['L ', 'M ', 'M ', 'J ', 'V ', 'S ', 'D ']
+  const weekdays = ['L ', 'M ', 'M ', 'J ', 'V ', 'S ', 'D ']  //remplace le nombre du jour dans le tableau en lettre
   const data = userSessionAverage.map((item) => {
     return { ...item, day: weekdays[item.day - 1] }
   })
@@ -31,24 +31,27 @@ function AverageSessions({ userSessionAverage }) {
 
       <ResponsiveContainer width="100%" height={263}>
         <LineChart
-          data={data}
+          data={data} //mettre dans data les données
           margin={{
             top: 0,
             right: 0,
             left: 0,
             bottom: 0,
           }}
-        >
-          <CartesianGrid vertical={false} horizontal={false} />
+        > 
+          <CartesianGrid 
+          vertical={false}   //grilles vertical fausse
+          horizontal={false} //grille horizontal fausse
+          /> 
 
           <Line
-            type="natural"
-            dataKey="sessionLength"
+            type="natural" //type du trail natural
+            dataKey="sessionLength" //donné vient sessionlength
             scale="band"
-            stroke="white"
+            stroke="white" //couleur en blanc
             strokeWidth={2}
             dot={false}
-            activeDot={{
+            activeDot={{ //taille de valeur et couleur en blanc
               fill: 'white',
               strokeOpacity: '.5',
               strokeWidth: '10',
@@ -57,7 +60,7 @@ function AverageSessions({ userSessionAverage }) {
             unit=" min"
           />
 
-          <XAxis
+          <XAxis //couleur et opacité du lettre du jour
             dataKey="day"
             tick={{ fill: 'white', opacity: '.7' }}
             tickLine={false}
@@ -65,15 +68,15 @@ function AverageSessions({ userSessionAverage }) {
             interval="preserveStartEnd"
             axisLine={false}
           />
-          <YAxis hide={true} domain={['dataMin-20', 'dataMax+40']} />
+          <YAxis hide={true} domain={['dataMin-20', 'dataMax+40']} /> 
 
-          <Tooltip
+          <Tooltip  //format et couleur de la valeur
             itemStyle={{
               color: 'black',
               fontSize: 8,
               fontWeight: 500,
             }}
-            formatter={(value, name, unit) => [value, unit]}
+            formatter={(value, name, unit) => [value, unit]} //formatter la valeur
             labelStyle={{ display: 'none' }}
             cursor={{
               stroke: 'black',
