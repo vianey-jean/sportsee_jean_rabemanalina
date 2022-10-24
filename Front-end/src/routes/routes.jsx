@@ -5,7 +5,6 @@ import Header from '../compenents/header';
 import SideBar from "../compenents/sideBar";
 import Home from '../pages/home';
 import Error from '../pages/error';
-import UserMocked from '../pages/userMocked';
 import UserApi from '../pages/userApi';
 import React from "react";
 
@@ -22,10 +21,6 @@ export const routes = [
             {
                 index: true, //dans le main, c'est par défaut c'est la page home
                 element: <Home />,
-            },
-            {
-                path: "/UserMocked/:id",
-                element: <UserMocked />,  //on selectionne id par mocked
             },
             {
                 path: "/User/:id",

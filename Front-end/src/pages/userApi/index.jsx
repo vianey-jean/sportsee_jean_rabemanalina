@@ -6,6 +6,13 @@ import { getUserData,
   getActivity,
   getAverageSession,
   getPerformance, } from '../../services/serviceApi'
+  import {  //récupère les données
+    USER_MAIN_DATA,
+    USER_ACTIVITY,
+    USER_AVERAGE_SESSIONS,
+    USER_PERFORMANCE
+   
+  } from '../../datas/mockedUsersDatas'
 import UserHello from '../../compenents/userHello'
 import Activity from '../../compenents/activity'
 import AverageSessions from '../../compenents/averageSessions'
@@ -22,6 +29,7 @@ import Loader from '../../compenents/loader'
 
 function User() {
   const { id } = useParams()
+  const idNum = parseInt(id, 10)
 
   const [userData, setUserData] = useState([])
   const [userActivity, setUserActivity] = useState([])
@@ -56,90 +64,111 @@ function User() {
     })
   }, [id])
 
+  const userMoked = USER_MAIN_DATA.findIndex(function (item) {  //selectionné seulement la valeur de id selectionné
+    return idNum === item.id
+  })
+
+
+
+  const userMokedFirstName = USER_MAIN_DATA[userMoked].userInfos.firstName 
+  const userMokedActivity = USER_ACTIVITY[userMoked].sessions
+ 
+  const userMokedSessionAverage = USER_AVERAGE_SESSIONS[userMoked].sessions
+  const userMokedPerform = USER_PERFORMANCE[userMoked].data
+  console.log(userMokedPerform)
+  const userScore1 = USER_MAIN_DATA[userMoked].todayScore || USER_MAIN_DATA[userMoked].score 
+  const userMokedKeyData = USER_MAIN_DATA[userMoked].keyData
+  
+ 
+
   
 
   return (
     <section className="containerUser">
-      {userDataLoading ? (  //chargement, et lancement loader puis rester la si pas connecté à API
+      {userDataLoading === undefined? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="userHello">
           <p>Chargement du prénom...</p>
           <Loader />
         </div>
       ) : userData.firstName === undefined ? (
-        <div className="userHello">
-          <p>Name no available</p>
-        </div>
+      
+          <UserHello userFirstName={userMokedFirstName} />
+      
       ) : (
-       
-        <UserHello userFirstName={userData.firstName} /> 
+        <UserHello userFirstName={userData.firstName } /> 
         //si c'est connecter à API, montre la valeur
        
       )}
 
-      {userActivityLoading ? ( //chargement, et lancement loader puis rester la si pas connecté à API
+      {userActivityLoading === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="dailyActivity">
           <p>Chargement du rapport d'activité quotidienne...</p>
           <Loader />
         </div>
       ) : userActivity === undefined ? (
-        <div className="dailyActivity">
-          <p>Activity no available</p>
-        </div>
+          <Activity userActivity={userMokedActivity} /> 
+         
       ) : (
         <Activity userActivity={userActivity} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userAverageSessionLoading || userAverageSession === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
+      {userAverageSessionLoading === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="averageSessions">
           <p>Chargement des durées moyennes de sessions...</p>
           <Loader />
         </div>
       ) : userAverageSession === undefined ? (
-        <div className="averageSessions">
-          <p>Average sessions no available</p>
-        </div>
+        < div className="averageSessions">
+          <AverageSessions userSessionAverage={userMokedSessionAverage} /> 
+          </div>
       ) : (
         <AverageSessions userSessionAverage={userAverageSession} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userDataLoading || userData.userScore === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
+
+
+
+
+      {userPerformanceLoading  === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
+        <>
+          <p>Chargement des données de performances...</p>
+          <Loader />
+        </>
+      ) : userPerformance === undefined ? (
+        
+        <Perform userPerform={userMokedPerform} />
+       
+      ) : (
+        <Perform userPerform={userPerformance} />  //si c'est connecter à API, montre la valeur
+      )}
+
+      {userDataLoading  === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="score">
           <p>Chargement du score...</p>
           <Loader />
         </div>
       ) : userData.userScore === undefined ? (
-        <div className="score">
-          <p>Score no available</p>
-        </div>
+       
+          <Score userScore={userScore1} />
+       
       ) : (
         <Score userScore={userData.userScore} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userDataLoading || userData.userKey === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
+      {userDataLoading === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="nutrient">
           <p>Chargement des donnés d'alimentation...</p>
           <Loader />
         </div>
       ) : userData.userKey === undefined ? (
-        <div className="nutrient">
-          <p>Nutrients no available</p>
-        </div>
+        
+           <Nutrients userKeyData={userMokedKeyData} />
+        
       ) : (
         <Nutrients userKeyData={userData.userKey} />  //si c'est connecter à API, montre la valeur
       )}
 
-      {userPerformanceLoading || userPerformance === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
-        <div className="perform">
-          <p>Chargement des données de performances...</p>
-          <Loader />
-        </div>
-      ) : userPerformance === undefined ? (
-        <div className="perform">
-          <p>Performances no available</p>
-        </div>
-      ) : (
-        <Perform userPerform={userPerformance} />  //si c'est connecter à API, montre la valeur
-      )}
+      
     </section>
      
   )

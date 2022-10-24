@@ -15,18 +15,7 @@ import Femme from '../../assets/avatarFemme.png'
 function Home() {
   return (
     <section className="homeSection"> 
-      <Link className="homeSection__userNav__link" to="UserMocked/12"> {/**lien vers userMoked de id 12 */}
-       <li className = "profil">
-        <img src={Homme} alt=""  />
-        <p>Karl Mock</p>
-        </li>
-      </Link>
-      <Link className="homeSection__userNav__link" to="UserMocked/18">{/**lien vers userMoked de id 18 */} 
-        <li className = "profil">
-          <img src= {Femme} alt ="" />
-          <p>Cecilia Mock</p>
-        </li>
-      </Link>
+    
       <Link className="homeSection__userNav__link" to="User/12">{/**lien vers userAPI de id 12 */}
       <li className = "profil">
         <img src={Homme} alt=""  />
