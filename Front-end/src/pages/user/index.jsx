@@ -75,7 +75,7 @@ function User() {
  
   const userMokedSessionAverage = USER_AVERAGE_SESSIONS[userMoked].sessions
   const userMokedPerform = USER_PERFORMANCE[userMoked].data
-  console.log(userMokedPerform)
+  
   const userScore1 = USER_MAIN_DATA[userMoked].todayScore || USER_MAIN_DATA[userMoked].score 
   const userMokedKeyData = USER_MAIN_DATA[userMoked].keyData
   
@@ -124,10 +124,6 @@ function User() {
       ) : (
         <AverageSessions userSessionAverage={userAverageSession} />  //si c'est connecter à API, montre la valeur
       )}
-
-
-
-
 
       {userPerformanceLoading  === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <>

@@ -5,7 +5,7 @@ import Header from '../compenents/header';
 import SideBar from "../compenents/sideBar";
 import Home from '../pages/home';
 import Error from '../pages/error';
-import UserApi from '../pages/userApi';
+import UserApi from '../pages/user';
 import React from "react";
 
 /**

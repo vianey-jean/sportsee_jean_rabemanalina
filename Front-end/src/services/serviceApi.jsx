@@ -14,9 +14,10 @@ import axios from 'axios'  //import axios
 export async function getUserData({ id }) {
   try {
     const response = await axios.get(`${process.env.REACT_APP_API_URL} +${id}`) // getUserdata: se connecte à localhost user avec id selectionné
+    console.log(response.data.data)
     return response.data.data //retour le donné ou
   } catch (error) {  //erreur  
-    console.error(error)
+    console.log('=====error=====', error)
   }
 }
 
@@ -32,9 +33,11 @@ export async function getActivity({ id }) {
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL} +${id}/activity` // getactivity: se connecte à localhost user avec id selectionné
     )
+    console.log(response.data.data.sessions)
     return response.data.data.sessions
+    
   } catch (error) {
-    console.error(error)
+    console.log('=====error=====', error)
   }
 }
 
@@ -49,9 +52,10 @@ export async function getAverageSession({ id }) {
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL} +${id}/average-sessions`  // getaveragessession: se connecte à localhost user avec id selectionné
     )
+    console.log(response.data.data.sessions)
     return response.data.data.sessions
   } catch (error) {
-    console.error(error)
+    console.log('=====error=====', error)
   }
 }
 
@@ -66,8 +70,9 @@ export async function getPerformance({ id }) {
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL} +${id}/performance`  // getperform: se connecte à localhost user avec id selectionné
     ) 
+    console.log(response.data.data)
     return response.data.data
   } catch (error) {
-    console.error(error)
+    console.log('=====error=====', error)
   }
 }
