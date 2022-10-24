@@ -9,10 +9,12 @@ import axios from 'axios'  //import axios
 /**
  * utilisation axion avec get pour demande vers la base  et attentre le retour 
  */
+
+
 export async function getUserData({ id }) {
   try {
-    const response = await axios.get(`http://localhost:3000/user/${id}`) // getUserdata: se connecte à localhost user avec id selectionné
-    return response.data //retour le donné ou
+    const response = await axios.get(`${process.env.REACT_APP_API_URL} +${id}`) // getUserdata: se connecte à localhost user avec id selectionné
+    return response.data.data //retour le donné ou
   } catch (error) {  //erreur  
     console.error(error)
   }
@@ -24,12 +26,13 @@ export async function getUserData({ id }) {
  * @returns Object
  */
 
+
 export async function getActivity({ id }) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/${id}/activity` // getactivity: se connecte à localhost user avec id selectionné
+      `${process.env.REACT_APP_API_URL} +${id}/activity` // getactivity: se connecte à localhost user avec id selectionné
     )
-    return response.data
+    return response.data.data.sessions
   } catch (error) {
     console.error(error)
   }
@@ -44,9 +47,9 @@ export async function getActivity({ id }) {
 export async function getAverageSession({ id }) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/${id}/average-sessions`  // getaveragessession: se connecte à localhost user avec id selectionné
+      `${process.env.REACT_APP_API_URL} +${id}/average-sessions`  // getaveragessession: se connecte à localhost user avec id selectionné
     )
-    return response.data
+    return response.data.data.sessions
   } catch (error) {
     console.error(error)
   }
@@ -61,9 +64,9 @@ export async function getAverageSession({ id }) {
 export async function getPerformance({ id }) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/${id}/performance`  // getperform: se connecte à localhost user avec id selectionné
+      `${process.env.REACT_APP_API_URL} +${id}/performance`  // getperform: se connecte à localhost user avec id selectionné
     ) 
-    return response.data
+    return response.data.data
   } catch (error) {
     console.error(error)
   }

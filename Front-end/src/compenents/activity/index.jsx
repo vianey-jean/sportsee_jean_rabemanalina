@@ -16,7 +16,7 @@ import './_dailyActivity.scss' //import scss de l'activity
  * @param {Object[]} userActivity user's physical activity data
  * @param {String} userActivity[].day
  * @param {Number} userActivity[].kilogram - array activity on kg
- * @param {Number} userActivity[].calories - arry activity on kcal
+ * @param {Number} userActivity[].calories - array activity on kcal
  * @returns {React.ReactElement} JSX.Element - physical activity chart 
  * @see https://recharts.org/en-US/api/Barchart
  */
@@ -89,7 +89,7 @@ function Activity({ userActivity }) {
 
           <Bar
             yAxisId={0} //barre le premier (a gauche)
-            dataKey="kilogram" //la barre horrizontale celle en KG
+            dataKey="kilogram" //la barre verticale celle en KG
             fill="#282D30" //sa couleur
             barSize={7} //taille
             radius={[3, 3, 0, 0]} //radius

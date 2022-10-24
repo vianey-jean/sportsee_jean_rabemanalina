@@ -1,7 +1,11 @@
 //import react-router-dom, getAPI, userhello, activity, averagesession, perform, score, nutrients et loader
 
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { GetDatas } from '../services/getApi'
+import { getUserData,
+  getActivity,
+  getAverageSession,
+  getPerformance, } from '../../services/serviceApi'
 import UserHello from '../../compenents/userHello'
 import Activity from '../../compenents/activity'
 import AverageSessions from '../../compenents/averageSessions'
@@ -19,16 +23,40 @@ import Loader from '../../compenents/loader'
 function User() {
   const { id } = useParams()
 
-  const {  //recevoir les valeur vient de donné avec id selectionné
-    userData,
-    userActivity,
-    userAverageSession,
-    userPerformance,
-    userDataLoading,
-    userActivityLoading,
-    userAverageSessionLoading,
-    userPerformanceLoading,
-  } = GetDatas(id)
+  const [userData, setUserData] = useState([])
+  const [userActivity, setUserActivity] = useState([])
+  const [userAverageSession, setUserAverageSession] = useState([])
+  const [userPerformance, setUserPerformance] = useState([])
+
+  const [userDataLoading, setUserDataLoading] = useState(true)
+  const [userActivityLoading, setUserActivityLoading] = useState(true)
+  const [userAverageSessionLoading, setUserAverageSessionLoading] = useState(true)
+  const [userPerformanceLoading, setUserPerformanceLoading] = useState(true)
+
+  useEffect(() => {
+    getUserData({ id }).then((data) => {  //on utilise les donné de id selectionné
+      setUserData({
+        firstName: data.userInfos.firstName, //prénom
+        userKey: data.keyData, //keydata
+        userScore: data.todayScore || data.score,  //todayscore ou score
+      })
+      setUserDataLoading(false)
+    })
+    getActivity({ id }).then((data) => {  //donné activity
+      setUserActivity(data)
+      setUserActivityLoading(false)
+    })
+    getAverageSession({ id }).then((data) => {  //donné du averagesession
+      setUserAverageSession(data)
+      setUserAverageSessionLoading(false)
+    })
+    getPerformance({ id }).then((data) => {  //donné perform
+      setUserPerformance(data.data)
+      setUserPerformanceLoading(false)
+    })
+  }, [id])
+
+  
 
   return (
     <section className="containerUser">
@@ -42,7 +70,10 @@ function User() {
           <p>Name no available</p>
         </div>
       ) : (
-        <UserHello userFirstName={userData.firstName} />  //si c'est connecter à API, montre la valeur
+       
+        <UserHello userFirstName={userData.firstName} /> 
+        //si c'est connecter à API, montre la valeur
+       
       )}
 
       {userActivityLoading ? ( //chargement, et lancement loader puis rester la si pas connecté à API
@@ -110,7 +141,9 @@ function User() {
         <Perform userPerform={userPerformance} />  //si c'est connecter à API, montre la valeur
       )}
     </section>
+     
   )
+  
 }
 
 export default User
