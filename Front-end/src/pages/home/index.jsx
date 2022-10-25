@@ -28,7 +28,7 @@ function Home() {
           <p>Cecilia API</p>
         </li>
       </Link>
-      <Link className="homeSection__userNav__link__doe" to="-UserMocked/20"> {/**lien vers user de id 20 */}
+      <Link className="homeSection__userNav__link__doe" to=".User/20"> {/**lien vers user de id 20 */}
         <li className = "profil">
           <img src= {Homme} alt ="" />
           <p>John Doe</p>

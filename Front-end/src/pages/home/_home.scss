@@ -1,3 +1,8 @@
+@media screen and (min-width:769px) and (max-width:1024px){
+    
+}
+
+
 .elementsToDisplay {
     display: flex;
     align-items: center;
@@ -78,38 +83,3 @@
     grid-gap:0.2rem;
 }
 
-
-@media (max-width: 1216px) {
-    .homeSection{
-        display: flex;
-        flex-direction:unset;
-        &__userNav{
-            &__link{
-                
-                text-decoration: none;
-                color: white;
-                background-color: #d30707;
-                border-radius: 15px;
-                font-weight: 300;
-                font-size: 18px;
-                padding: 15px 15px;
-                margin: 5px 5px;
-                &__doe{
-                    text-decoration: none;
-                color: white;
-                background-color: #d30707;
-                border-radius: 15px;
-                font-weight: 300;
-                font-size: 18px;
-                padding: 15px 15px;
-                margin: 5px 5px;
-                }
-            }
-    }
-}
-    .profil img{
-        width: 50px;
-        height: 50px;
-       
-    }
-}

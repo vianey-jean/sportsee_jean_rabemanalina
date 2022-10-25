@@ -6,13 +6,12 @@ import { getUserData,
   getActivity,
   getAverageSession,
   getPerformance, } from '../../services/serviceApi'
+
   import {  //récupère les données
     USER_MAIN_DATA,
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,
-    USER_PERFORMANCE
-   
-  } from '../../datas/mockedUsersDatas'
+    USER_PERFORMANCE, } from '../../datas/mockedUsersDatas'
 import UserHello from '../../compenents/userHello'
 import Activity from '../../compenents/activity'
 import AverageSessions from '../../compenents/averageSessions'
@@ -75,7 +74,8 @@ function User() {
  
   const userMokedSessionAverage = USER_AVERAGE_SESSIONS[userMoked].sessions
   const userMokedPerform = USER_PERFORMANCE[userMoked].data
-  
+  //console.log (userPerformance)
+  //console.log (userMokedPerform)
   const userScore1 = USER_MAIN_DATA[userMoked].todayScore || USER_MAIN_DATA[userMoked].score 
   const userMokedKeyData = USER_MAIN_DATA[userMoked].keyData
   
@@ -85,6 +85,7 @@ function User() {
 
   return (
     <section className="containerUser">
+      
       {userDataLoading === undefined? (  //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="userHello">
           <p>Chargement du prénom...</p>
@@ -100,7 +101,7 @@ function User() {
        
       )}
 
-      {userActivityLoading === undefined ? ( //chargement, et lancement loader puis rester la si pas connecté à API
+      {userActivityLoading ? ( //chargement, et lancement loader puis rester la si pas connecté à API
         <div className="dailyActivity">
           <p>Chargement du rapport d'activité quotidienne...</p>
           <Loader />
@@ -122,18 +123,15 @@ function User() {
           <AverageSessions userSessionAverage={userMokedSessionAverage} /> 
           </div>
       ) : (
-        <AverageSessions userSessionAverage={userAverageSession} />  //si c'est connecter à API, montre la valeur
+        
+        <AverageSessions userSessionAverage={userAverageSession} /> 
+       
       )}
 
-      {userPerformanceLoading  === undefined ? (  //chargement, et lancement loader puis rester la si pas connecté à API
-        <>
-          <p>Chargement des données de performances...</p>
-          <Loader />
-        </>
-      ) : userPerformance === undefined ? (
-        
-        <Perform userPerform={userMokedPerform} />
-       
+      {userPerformanceLoading  ? (  //chargement, et lancement loader puis rester la si pas connecté à API
+        < div className="perform">
+          <Perform userPerform={userMokedPerform} />
+        </div>
       ) : (
         <Perform userPerform={userPerformance} />  //si c'est connecter à API, montre la valeur
       )}
