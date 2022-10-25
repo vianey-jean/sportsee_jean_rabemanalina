@@ -21,7 +21,8 @@ import './_sideBar.scss'
 function SideBar() {
  
   return (
-    <nav className="sideNav"> {/**class sidenav */}
+    <div className="sideNav"> {/**class sidenav */}
+      <ul>
       <NavLink className="sideNav__link" to="/"> {/**lien vers home */}
         <img className="nav__logo" src={yoga} alt="yoga" />
       </NavLink>
@@ -34,9 +35,10 @@ function SideBar() {
       <NavLink className="sideNav__link" to="/">{/**lien vers home */}
         <img className="nav__logo" src={force} alt="force" />
       </NavLink>
-      <p>Copiryght, SportSee 2022</p> {/**copyright */}
+      </ul>
+      <div className="copyright">Copiryght, SportSee 2022</div> {/**copyright */}
       <h6>RJMV</h6>
-    </nav>
+    </div>
   )
 }
 

@@ -19,6 +19,7 @@ import Perform from '../../compenents/perform'
 import Score from '../../compenents/score'
 import Nutrients from '../../compenents/nutrients'
 import Loader from '../../compenents/loader'
+import './_user.scss'
 
 
 /**
