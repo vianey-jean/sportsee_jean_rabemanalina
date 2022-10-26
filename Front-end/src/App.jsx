@@ -1,18 +1,18 @@
 import {useRoutes} from 'react-router-dom'
-import {routes} from './routes/routes'
+import {routes} from './router/Routes'
+
 
 /**
- *
- * @returns {React.ReactElement} JSX.Element - the user main page with API data
+ * App function
+ * @returns {ReactElement}
  */
-
 function App() {
   let elementsToDisplay = useRoutes(routes)
   return (
-   <>
-    {elementsToDisplay}
-   </>
+    <main className="App">
+       {elementsToDisplay}
+    </main>
   )
 }
 
-export default App;
+export default App

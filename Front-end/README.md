@@ -7,7 +7,7 @@
 
 ---
 
-![logo](src/assets/logo_sportsee.svg)
+![logo](src/assets/logo.svg)
 
 ### Presentation
 
@@ -19,7 +19,6 @@ SportSee project is an application for sportive people that want to follow their
 - [NPM (**version 8.19.2**)](https://www.npmjs.com/)
 - [REACT (**version 18.2.0**)](https://en.reactjs.org/) is recommanded to run charts correctly
 - [Recharts (**version 2.1.14**)](https://recharts.org/en-US/ )
-- [Axios (**version 1.1.2**)](https://axios-http.com/)
 - [React-router-dom(**version 18.2.0**)](https://en.reactjs.org/)
 - [React-dom(**version 18.2.0**)](https://en.reactjs.org/)
 - [sass (**version 1.55.0**)](https://sass-lang.com/install)
