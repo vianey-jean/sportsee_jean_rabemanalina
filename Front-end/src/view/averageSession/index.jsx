@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
  * @param {object} average user average sessions
  * @returns {ReactComponentElement} line graph of user average sessions
  */
-const LineGraph = ({ average }) => {
+const AverageSession = ({ average }) => {
   /**
    * CustomTooltipAverage
    * @param {boolean} active cursor in graph ?
@@ -93,8 +93,8 @@ const LineGraph = ({ average }) => {
     </ResponsiveContainer>
   )
 }
-LineGraph.propTypes = {
+AverageSession.propTypes = {
   average: PropTypes.array.isRequired,
 }
 
-export default LineGraph
+export default AverageSession

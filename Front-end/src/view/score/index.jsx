@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
  * @param {object} userMainDatas user main datas
  * @returns {ReactComponentElement} radial bar chart of percentage of goal
  */
-const SimpleRadialBarChart = ({ userMainDatas }) => {
+const Score = ({ userMainDatas }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadialBarChart
@@ -29,7 +29,7 @@ const SimpleRadialBarChart = ({ userMainDatas }) => {
     </ResponsiveContainer>
   )
 }
-SimpleRadialBarChart.propTypes = {
+Score.propTypes = {
   userMainDatas: PropTypes.object.isRequired,
 }
-export default SimpleRadialBarChart
+export default Score

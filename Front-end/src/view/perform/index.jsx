@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
  * @param {object} performances user performances
  * @returns {ReactComponentElement}  radar graph of user performances
  */
-const RadarGraph = ({ performances }) => {
+const Perform = ({ performances }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart data={performances}>
@@ -33,8 +33,8 @@ const RadarGraph = ({ performances }) => {
     </ResponsiveContainer>
   )
 }
-RadarGraph.propTypes = {
+Perform.propTypes = {
   performances: PropTypes.array.isRequired,
 }
 
-export default RadarGraph
+export default Perform

@@ -16,7 +16,7 @@ import PropTypes from 'prop-types'
  * @param {object} activity user activity
  * @returns {ReactComponentElement} Bar graph of user activity
  */
-const BarGraph = ({ activity }) => {
+const Activity = ({ activity }) => {
   const CustomTooltipActivity = ({ active, payload }) => {
     if (active) {
       return (
@@ -101,8 +101,8 @@ const BarGraph = ({ activity }) => {
     </>
   )
 }
-BarGraph.propTypes = {
+Activity.propTypes = {
   activity: PropTypes.array.isRequired,
 }
 
-export default BarGraph
+export default Activity

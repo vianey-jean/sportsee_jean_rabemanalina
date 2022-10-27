@@ -1,23 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import Header from '../../view/header'
-import './_tableau2Bord.scss'
-import CardInfo from '../../view/cardInfo'
+import { useParams } from 'react-router-dom'
+
+import ErrorPage from '../errorPage'
+
 import flammeRouge from '../../assets/flammeRouge.svg'
 import chicken from '../../assets/PouletBleu.svg'
 import apple from '../../assets/pommeJaune.svg'
 import burger from '../../assets/cheeseburger.svg'
-import { useParams } from 'react-router-dom'
+
 import getMainDatas from '../../model/dataFormater/mainDataStore'
 import getUserActivity from '../../model/dataFormater/userActivityStore'
 import getUserAverageSessions from '../../model/dataFormater/userAverageSessionsStore'
-import BarGraph from '../../view/activity'
-import LineGraph from '../../view/averageSession'
-import RadarGraph from '../../view/perform'
-import SimpleRadialBarChart from '../../view/score'
 import getUserPerformance from '../../model/dataFormater/userPerformanceStore'
-import ErrorPage from '../errorPage'
+
+import Activity from '../../view/activity'
+import AverageSession from '../../view/averageSession'
+import Perform from '../../view/perform'
+import Score from '../../view/score'
+import CardInfo from '../../view/cardInfo'
+import Header from '../../view/header'
 import Loader from '../../view/loader'
+
+import './_tableau2Bord.scss'
 
 /**
  *Dashboard
@@ -84,7 +89,7 @@ const Dashboard = () => {
                   <section className="graphsContainer">
                     <div className="dailyActivity">
                       {userActivity ? (
-                        <BarGraph activity={userActivity} />
+                        <Activity activity={userActivity} />
                       ) : null}
                     </div>
                     <div className="otherGraph">
@@ -94,18 +99,18 @@ const Dashboard = () => {
                           sessions
                         </p>
                         {userAverageSessions ? (
-                          <LineGraph average={userAverageSessions} />
+                          <AverageSession average={userAverageSessions} />
                         ) : null}
                       </div>
                       <div className="performances">
                         {userPerformance ? (
-                          <RadarGraph performances={userPerformance} />
+                          <Perform performances={userPerformance} />
                         ) : null}
                       </div>
                       <div className="score">
                         <p className="pScore">Score</p>
                         <div className="radarBarChart">
-                          <SimpleRadialBarChart
+                          <Score
                             userMainDatas={userMainDatas}
                             className="radar"
                           />
