@@ -1,5 +1,5 @@
 import React from 'react'
-import './_leftBtn.scss'
+import './_navLogo.scss'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
  * @param {string} icone
  * @returns {ReactElement}
  */
-const LeftBtn = ({ icone }) => {
+const NavLogo = ({ icone }) => {
   return (
     <div className="imgContainer">
       <NavLink to="/">
@@ -18,8 +18,8 @@ const LeftBtn = ({ icone }) => {
     </div>
   )
 }
-LeftBtn.propTypes = {
+NavLogo.propTypes = {
   icone: PropTypes.string,
 }
 
-export default LeftBtn
+export default NavLogo

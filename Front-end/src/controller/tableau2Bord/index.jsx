@@ -25,10 +25,10 @@ import Loader from '../../view/loader'
 import './_tableau2Bord.scss'
 
 /**
- *Dashboard
- * @returns {ReactElements} different components constituting the dashboard
+ *Tableau2Bord
+ * @returns {ReactElements} different components constituting the Tableau2Bord
  */
-const Dashboard = () => {
+const Tableau2Bord = () => {
   let { userId } = useParams()
   console.log(parseInt(userId))
 
@@ -168,4 +168,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Tableau2Bord

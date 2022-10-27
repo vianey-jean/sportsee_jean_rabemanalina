@@ -21,10 +21,14 @@
       }
     }
     .kcal {
+      color:red;
       @media screen and (max-width: 900px) {
         color: red;
         margin-left: 20px;
       }
+    }
+    .cal{
+      color:red;
     }
     @media screen and (max-width: 900px) {
       margin-right: 50px;

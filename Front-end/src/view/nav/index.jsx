@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 /**
  * @returns {ReactElement}
  */
-const TopNav = () => {
+const Nav = () => {
   return (
     <header className="topNav">
       <NavLink to="/"> 
@@ -33,4 +33,4 @@ const TopNav = () => {
   )
 }
 
-export default TopNav
+export default Nav

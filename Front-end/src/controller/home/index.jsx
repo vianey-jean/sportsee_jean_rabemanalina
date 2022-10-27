@@ -7,7 +7,7 @@ import './_home.scss'
  *
  * @returns {ReactElement} login page
  */
-const UserSelect = () => {
+const Home = () => {
   return (
     <div className="userSelect">
      
@@ -47,4 +47,4 @@ const UserSelect = () => {
   )
 }
 
-export default UserSelect
+export default Home

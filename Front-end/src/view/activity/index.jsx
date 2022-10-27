@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import './_activity.scss'
 import {
   CartesianGrid,
@@ -26,7 +26,6 @@ const Activity = ({ activity }) => {
         </div>
       )
     }
-
     return null
   }
 
@@ -104,5 +103,4 @@ const Activity = ({ activity }) => {
 Activity.propTypes = {
   activity: PropTypes.array.isRequired,
 }
-
 export default Activity
