@@ -3,7 +3,8 @@ import './_nav.scss'
 import logo from '../../assets/logo.svg'
 import { NavLink } from 'react-router-dom'
 /**
- * @returns {ReactElement}
+ * Vew - Nav, Display the application's Nav with navigation
+ * @returns {React.ReactElement} JSX.Element - Nav component
  */
 const Nav = () => {
   return (

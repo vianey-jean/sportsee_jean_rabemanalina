@@ -25,8 +25,9 @@ import Loader from '../../view/loader'
 import './_tableau2Bord.scss'
 
 /**
- *Tableau2Bord
- * @returns {ReactElements} different components constituting the Tableau2Bord
+ * Tableau2Bord
+ * Function that returns the user page
+ * @returns {React.ReactElement} JSX.Element - the user main page with API data
  */
 const Tableau2Bord = () => {
   let { userId } = useParams()

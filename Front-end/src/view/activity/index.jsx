@@ -12,10 +12,16 @@ import {
 import PropTypes from 'prop-types'
 
 /**
- *
- * @param {object} activity user activity
- * @returns {ReactComponentElement} Bar graph of user activity
+ * View - BarChart Graph of Daily activity
+ * @param {Object[]} activity user's physical activity data
+ * @param {String} activity[].day
+ * @param {Number} activity[].kilogram - array activity on kg
+ * @param {Number} activity[].calories - array activity on kcal
+ * @returns {React.ReactElement} JSX.Element - physical activity chart 
+ * @see https://recharts.org/en-US/api/Barchart
  */
+
+
 const Activity = ({ activity }) => {
   const CustomTooltipActivity = ({ active, payload }) => {
     if (active) {

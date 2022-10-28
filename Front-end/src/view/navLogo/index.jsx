@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 /**
- *
+ * Vew - NavLogo, Display the application's NavLogo with navigation
  * @param {string} icone
  * @returns {ReactElement}
  */

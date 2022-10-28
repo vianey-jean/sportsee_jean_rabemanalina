@@ -6,6 +6,11 @@ import ErrorPage from '../controller/errorPage'
 import SideBar from '../view/sideBar'
 import Nav from '../view/nav'
 
+/**
+ * Dom injector and creation of router
+ * @return routes
+ */
+
 export const routes = [
   {
       path: "/",

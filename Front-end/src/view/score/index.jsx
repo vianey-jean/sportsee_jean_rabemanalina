@@ -6,7 +6,7 @@ import { RadialBarChart,
 import PropTypes from 'prop-types'
 
 /**
- *
+ * View - RadialChart Graph of todayScrore
  * @param {object} userMainDatas user main datas
  * @returns {ReactComponentElement} radial bar chart of percentage of goal
  */

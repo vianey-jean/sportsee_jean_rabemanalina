@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>controller/tableau2Bord/index.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#CardInfo">CardInfo</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#fetchMainDatas">fetchMainDatas</a></li><li><a href="global.html#fetchUserActivity">fetchUserActivity</a></li><li><a href="global.html#fetchUserAverageSessions">fetchUserAverageSessions</a></li><li><a href="global.html#fetchUserPerformance">fetchUserPerformance</a></li><li><a href="global.html#getMainDatas">getMainDatas</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Nav">Nav</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Perform">Perform</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#Tableau2Bord">Tableau2Bord</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">controller/tableau2Bord/index.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
+import ErrorPage from '../errorPage'
+
+import flammeRouge from '../../assets/flammeRouge.svg'
+import chicken from '../../assets/PouletBleu.svg'
+import apple from '../../assets/pommeJaune.svg'
+import burger from '../../assets/cheeseburger.svg'
+
+import getMainDatas from '../../model/dataFormater/mainDataStore'
+import getUserActivity from '../../model/dataFormater/userActivityStore'
+import getUserAverageSessions from '../../model/dataFormater/userAverageSessionsStore'
+import getUserPerformance from '../../model/dataFormater/userPerformanceStore'
+
+import Activity from '../../view/activity'
+import AverageSession from '../../view/averageSession'
+import Perform from '../../view/perform'
+import Score from '../../view/score'
+import CardInfo from '../../view/cardInfo'
+import Header from '../../view/header'
+import Loader from '../../view/loader'
+
+import './_tableau2Bord.scss'
+
+/**
+ * Tableau2Bord
+ * Function that returns the user page
+ * @returns {React.ReactElement} JSX.Element - the user main page with API data
+ */
+const Tableau2Bord = () => {
+  let { userId } = useParams()
+  console.log(parseInt(userId))
+
+  const [userMainDatas, setUserMainDatas] = useState()
+  const [userActivity, setUserActivity] = useState()
+  const [userAverageSessions, setUserAverageSessions] = useState()
+  const [userPerformance, setUserPerformance] = useState()
+  const [loading, setLoading] = useState(true)
+  const [goodUrl, setGoodUrl] = useState(true)
+
+  // DATAS PROCESSING
+  const loadUserMainDatas = async () => {
+    setLoading(true)
+    const datas = await getMainDatas(userId)
+    datas &amp;&amp; setUserMainDatas(datas)
+  }
+
+  const loadUserActivity = async () => {
+    const datas = await getUserActivity(userId)
+    setUserActivity(datas)
+  }
+  const loadUserAverageSessions = async () => {
+    const datas = await getUserAverageSessions(userId)
+    setUserAverageSessions(datas)
+  }
+  const loadUserPerformance = async () => {
+    const datas = await getUserPerformance(userId)
+    setUserPerformance(datas)
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    loadUserMainDatas()
+    loadUserActivity()
+    loadUserAverageSessions()
+    loadUserPerformance()
+  }, [userId])
+  console.log(userMainDatas)
+
+  useEffect(() => {
+    userMainDatas &amp;&amp; console.log(userMainDatas)
+    userMainDatas &amp;&amp; userMainDatas.id !== ''
+      ? setGoodUrl(true)
+      : setGoodUrl(false)
+  }, [userMainDatas])
+  return (
+    &lt;div>
+    
+      {!loading ? (
+        &lt;>
+          &lt;div className="mainContent">
+            {console.log(goodUrl)}
+            {goodUrl ? (
+              &lt;>
+                &lt;Header userName={userMainDatas.userInfos.firstName} />
+
+                &lt;div className="graphsAndDailyContainer">
+                  &lt;section className="graphsContainer">
+                    &lt;div className="dailyActivity">
+                      {userActivity ? (
+                        &lt;Activity activity={userActivity} />
+                      ) : null}
+                    &lt;/div>
+                    &lt;div className="otherGraph">
+                      &lt;div className="averageSessions">
+                        &lt;p className="pDescription">
+                          Durée moyenne des &lt;br />
+                          sessions
+                        &lt;/p>
+                        {userAverageSessions ? (
+                          &lt;AverageSession average={userAverageSessions} />
+                        ) : null}
+                      &lt;/div>
+                      &lt;div className="performances">
+                        {userPerformance ? (
+                          &lt;Perform performances={userPerformance} />
+                        ) : null}
+                      &lt;/div>
+                      &lt;div className="score">
+                        &lt;p className="pScore">Score&lt;/p>
+                        &lt;div className="radarBarChart">
+                          &lt;Score
+                            userMainDatas={userMainDatas}
+                            className="radar"
+                          />
+                          &lt;div className="userObjectif">
+                            &lt;p className="percent">
+                              {' '}
+                              {userMainDatas.scores[1].score}%
+                            &lt;/p>
+                            &lt;p>
+                              de votre &lt;br />
+                              objectif
+                            &lt;/p>
+                          &lt;/div>
+                        &lt;/div>
+                      &lt;/div>
+                    &lt;/div>
+                  &lt;/section>
+                  &lt;aside className="dailyIntake">
+                    &lt;CardInfo
+                      icone={flammeRouge}
+                      number={userMainDatas.keyData.calorieCount}
+                      unit={'kCal'}
+                      type={'Calories'}
+                    />
+                    &lt;CardInfo
+                      icone={chicken}
+                      number={userMainDatas.keyData.proteinCount}
+                      unit={'g'}
+                      type={'Protéines'}
+                    />
+                    &lt;CardInfo
+                      icone={apple}
+                      number={userMainDatas.keyData.carbohydrateCount}
+                      unit={'g'}
+                      type={'Glucides'}
+                    />
+                    &lt;CardInfo
+                      icone={burger}
+                      number={userMainDatas.keyData.lipidCount}
+                      unit={'g'}
+                      type={'Lipides'}
+                    />
+                  &lt;/aside>
+                &lt;/div>
+              &lt;/>
+            ) : (
+              &lt;ErrorPage />
+            )}
+          &lt;/div>
+        &lt;/>
+      ) : (
+       &lt;Loader />
+      )}
+    &lt;/div>
+  )
+}
+
+export default Tableau2Bord
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 28 2022 09:53:22 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

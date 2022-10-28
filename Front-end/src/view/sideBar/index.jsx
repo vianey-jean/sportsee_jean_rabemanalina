@@ -8,9 +8,15 @@ import './_sideBar.scss'
 import PropTypes from 'prop-types'
 
 /**
- *
- * @returns {ReactElement}
+ * View - SideBar
+ * * Logos
+   * @param {yoga} yoga // yogaLogo
+   * @param {natation} natation // natationaLogo
+   * @param {cycle} cycle // cycleLogo
+   * @param {force} force  // forceLogo
+ * @returns {React.ReactElement} JSX.Element - SideBar component
  */
+
 const SideBar = () => {
   return (
     <aside className="leftNavBar">

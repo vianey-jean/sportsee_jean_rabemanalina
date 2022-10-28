@@ -9,11 +9,15 @@ import {
 } from 'recharts'
 import './_averageSession.scss'
 import PropTypes from 'prop-types'
+
 /**
- *Line graph
- * @param {object} average user average sessions
- * @returns {ReactComponentElement} line graph of user average sessions
+ * View - LineChart Graph of session Longer
+ * @param {object[]} average user’s average session data
+ * @param {Number} average[].day Day of the week
+ * @param {Number} average[].sessionLength Session duration
+ * @returns {React.ReactElement} JSX.Element - average session chart
  */
+
 const AverageSession = ({ average }) => {
   /**
    * CustomTooltipAverage

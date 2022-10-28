@@ -4,9 +4,9 @@ import clap from '../../assets/clap.png'
 import PropTypes from 'prop-types'
 
 /**
- * Dashboard header to greet the user
+ * View - Header, Display the application's header with navigation
  * @param {string} userName user name
- * @returns {ReactElement} hi user
+ * @returns {React.ReactElement} JSX.Element - header component
  */
 
 const Header = ({ userName }) => {

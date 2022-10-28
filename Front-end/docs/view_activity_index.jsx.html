@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>view/activity/index.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#CardInfo">CardInfo</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#fetchMainDatas">fetchMainDatas</a></li><li><a href="global.html#fetchUserActivity">fetchUserActivity</a></li><li><a href="global.html#fetchUserAverageSessions">fetchUserAverageSessions</a></li><li><a href="global.html#fetchUserPerformance">fetchUserPerformance</a></li><li><a href="global.html#getMainDatas">getMainDatas</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Nav">Nav</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Perform">Perform</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#Tableau2Bord">Tableau2Bord</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">view/activity/index.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import './_activity.scss'
+import {
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+} from 'recharts'
+import PropTypes from 'prop-types'
+
+/**
+ * View - BarChart Graph of Daily activity
+ * @param {Object[]} activity user's physical activity data
+ * @param {String} activity[].day
+ * @param {Number} activity[].kilogram - array activity on kg
+ * @param {Number} activity[].calories - array activity on kcal
+ * @returns {React.ReactElement} JSX.Element - physical activity chart 
+ * @see https://recharts.org/en-US/api/Barchart
+ */
+
+
+const Activity = ({ activity }) => {
+  const CustomTooltipActivity = ({ active, payload }) => {
+    if (active) {
+      return (
+        &lt;div className="customTooltipActivity">
+          &lt;p>{`${payload[0].value}Kg`}&lt;/p>
+          &lt;p>{`${payload[1].value}Kcal`}&lt;/p>
+        &lt;/div>
+      )
+    }
+    return null
+  }
+
+  return (
+    &lt;>
+      &lt;div className="description">
+        &lt;p>Activité quotidienne&lt;/p>
+        &lt;ul>
+          &lt;li id="weight">Poids&lt;/li>
+          &lt;span className="kg">(kg)&lt;/span>
+          &lt;li className="cal">Calories brûlées&lt;/li>
+          &lt;span className="kcal">(kCal)&lt;/span>
+        &lt;/ul>
+      &lt;/div>
+      &lt;ResponsiveContainer height={270} width="100%">
+        &lt;BarChart data={activity} className="barChart">
+          &lt;Tooltip
+            content={&lt;CustomTooltipActivity />}
+            cursor={{ opacity: 0.4 }}
+          />
+          &lt;CartesianGrid
+            strokeDasharray="2 2" //Taille des traits de mesures en horizontal mais pas verstical
+            horizontal={true}
+            vertical={false}
+          />
+          &lt;Bar
+            yAxisId={0} //barre le premier (a gauche)
+            dataKey="kilogram" //la barre verticale celle en KG
+            fill="#282D30" //sa couleur
+            barSize={7} //taille
+            radius={[3, 3, 0, 0]} //radius
+            unit=" kg"  //unité
+            name="Poids (kg)"
+          />
+
+          &lt;Bar
+            yAxisId={1} //barre deuxième (celle à droite)
+            dataKey="calories" //la barre horizontale en calorie
+            fill="#E60000" // sa couleur
+            barSize={7} // sa taille
+            radius={[3, 3, 0, 0]} //radius
+            unit=" Kcal"   //unite
+            name="Calories brûlées (kCal)"
+          />
+
+            &lt;XAxis
+            dataKey="day"
+            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }} //taille et couleur de mesure du jour au dessous de la barre (unité jour)
+            tickLine={false}
+            tickSize={16}
+            stroke="#DEDEDE"
+          />
+
+          &lt;YAxis
+            yAxisId={0}  // la barre de mesure la première
+            dataKey="kilogram" //donné en kg
+            stroke="#9B9EAC" //sa couleur
+            orientation="right" //son orientation à droite
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }}
+            domain={['dataMin - 1', 'dataMax + 2']}
+          />
+          &lt;YAxis
+            yAxisId={1}  //la barre de mesure la deuxième
+            dataKey="calories"
+            hide={true} //donné en calorie
+            domain={['dataMin - 100', 'dataMax + 100']} //mise en place la mesure en horizontale les calories
+          />
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/>
+  )
+}
+Activity.propTypes = {
+  activity: PropTypes.array.isRequired,
+}
+export default Activity
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Fri Oct 28 2022 09:53:22 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

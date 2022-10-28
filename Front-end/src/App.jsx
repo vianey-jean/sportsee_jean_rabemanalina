@@ -3,9 +3,10 @@ import {routes} from './router/Routes'
 
 
 /**
- * App function
- * @returns {ReactElement}
+ *
+ * @returns {React.ReactElement} JSX.Element - the user main page with API data
  */
+
 function App() {
   let elementsToDisplay = useRoutes(routes)
   return (

@@ -10,10 +10,13 @@ import './_perform.scss'
 import PropTypes from 'prop-types'
 
 /**
- *
- * @param {object} performances user performances
- * @returns {ReactComponentElement}  radar graph of user performances
+ * View - RadarChart Graph of performance
+  * @param {Object[]}  userPerform - The different types of performances
+ * @param {number}  userPerform[].value - Performance values
+ * @param {number}  userPerform[].kind - Types of performances
+ * @returns {React.ReactElement} JSX.Element - Graph of performance
  */
+
 const Perform = ({ performances }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">

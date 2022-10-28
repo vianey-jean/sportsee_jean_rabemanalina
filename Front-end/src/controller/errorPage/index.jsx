@@ -2,6 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './_errorPage.scss'
 
+/**
+ * ERROR PAGE
+ * @returns {React.ReactElement} JSX.Element error page
+ */
+
+
 const ErrorPage = () => {
   return (
     <div className="errorPageContainer">

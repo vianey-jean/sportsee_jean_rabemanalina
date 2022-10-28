@@ -3,10 +3,12 @@ import karl from '../../assets/avatarHomme.png'
 import cecilia from '../../assets/avatarFemme.png'
 import john from '../../assets/avatarHomme.png'
 import './_home.scss'
+
 /**
- *
- * @returns {ReactElement} login page
+ * home - links to user pages based on data type (mocked or retrieve from API)
+ * @returns {React.ReactElement} JSX.Element - Link to user page
  */
+
 const Home = () => {
   return (
     <div className="userSelect">
