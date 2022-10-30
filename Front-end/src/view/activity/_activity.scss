@@ -1,39 +1,48 @@
 .description {
   display: flex;
   justify-content: space-between;
+
   p {
     margin-left: 32px;
     font-size: 15px;
+
     @media screen and (max-width: 900px) {
       margin-left: 3px;
       font-size: 12px;
       width: auto;
     }
   }
+
   ul {
     display: flex;
     margin-right: 26px;
     list-style: none;
     color: #74798c;
+
     .kg {
       @media screen and (max-width: 900px) {
         color: black;
       }
     }
+
     .kcal {
-      color:red;
+      color: red;
+
       @media screen and (max-width: 900px) {
         color: red;
         margin-left: 20px;
       }
     }
-    .cal{
-      color:red;
+
+    .cal {
+      color: red;
     }
+
     @media screen and (max-width: 900px) {
       margin-right: 50px;
       font-size: 12px;
     }
+
     li {
       &::before {
         content: '';
@@ -45,23 +54,29 @@
         background-color: red;
         border-radius: 50%;
       }
+
       margin-left: 32px;
+
       @media screen and (max-width: 900px) {
         margin-left: 3px;
         font-size: 12px;
       }
+
       list-style-type: {
         background: red;
       }
     }
+
     #weight {
       &::before {
         background-color: black;
       }
+
       @media screen and (max-width: 900px) {
         display: none;
       }
     }
+
     .cal {
       @media screen and (max-width: 900px) {
         display: none;
@@ -69,6 +84,7 @@
     }
   }
 }
+
 .customTooltipActivity {
   background-color: #e60000;
   color: white;
@@ -79,6 +95,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   p {
     color: white;
   }

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import karl from '../../assets/avatarHomme.png'
+import avatarHomme from '../../assets/avatarHomme.png'
 import cecilia from '../../assets/avatarFemme.png'
-import john from '../../assets/avatarHomme.png'
+//import john from '../../assets/avatarHomme.png'
 import './_home.scss'
 
 /**
@@ -12,13 +12,12 @@ import './_home.scss'
 const Home = () => {
   return (
     <div className="userSelect">
-     
       <div className="userContainer">
         <ul>
           <NavLink className="navlink" to="/12">
             <div className="userCard">
               <div className="imgContainer">
-                <img src={karl} alt="karl " />
+                <img src={avatarHomme} alt="karl " />
               </div>
               <p>Karl</p>
               <p>Dovineau</p>
@@ -37,7 +36,7 @@ const Home = () => {
           <NavLink className="navlink" to="/20">
             <div className="userCard">
               <div className="imgContainer">
-                <img src={john} alt="john " />
+                <img src={avatarHomme} alt="john " />
               </div>
               <p>John</p>
               <p>Doe</p>

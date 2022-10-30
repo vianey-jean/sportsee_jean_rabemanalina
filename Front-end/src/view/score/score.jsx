@@ -1,8 +1,10 @@
 import React from 'react'
-import { RadialBarChart,
+import {
+  RadialBarChart,
   RadialBar,
   ResponsiveContainer,
-  PolarAngleAxis,} from 'recharts'
+  PolarAngleAxis,
+} from 'recharts'
 import PropTypes from 'prop-types'
 
 /**
@@ -19,14 +21,13 @@ const Score = ({ userMainDatas }) => {
         barSize={10} //taille bar
         startAngle={80} //angle
         endAngle={440} //fin angle
-        fill={'#FF0000'}  //couleur du trait en rouge
+        fill={'#FF0000'} //couleur du trait en rouge
       >
-       <circle cx="50%" cy="50%" fill="gray" r="80"></circle>
+        <circle cx="50%" cy="50%" fill="gray" r="80"></circle>
         <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
         <circle cx="50%" cy="50%" fill="white" r="70"></circle>
-        
+
         <RadialBar clockWise cornerRadius={10} fill="#FF0000" dataKey="score" />
-      
       </RadialBarChart>
     </ResponsiveContainer>
   )

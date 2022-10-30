@@ -69,29 +69,30 @@ const AverageSession = ({ average }) => {
           s
           cursor={{ opacity: 0.4 }}
         />
-      <XAxis //couleur et opacité du lettre du jour
-            dataKey="day"
-            tick={{ fill: 'white', opacity: '.7' }}
-            tickLine={false}
-            tickMargin={5}
-            interval="preserveStartEnd"
-            axisLine={false}
-          />
+        <XAxis //couleur et opacité du lettre du jour
+          dataKey="day"
+          tick={{ fill: 'white', opacity: '.7' }}
+          tickLine={false}
+          tickMargin={5}
+          interval="preserveStartEnd"
+          axisLine={false}
+        />
         <YAxis domain={['dataMin-10', 'dataMax+5']} stroke="none" />
         <Line
-           type="natural" //type du trail natural
-           dataKey="sessionLength" //donné vient sessionlength
-           scale="band"
-           stroke="white" //couleur en blanc
-           strokeWidth={2}
-           dot={false}
-           activeDot={{ //taille de valeur et couleur en blanc
-             fill: 'white',
-             strokeOpacity: '.5',
-             strokeWidth: '10',
-             r: 4,
-           }}
-           unit=" min"
+          type="natural" //type du trail natural
+          dataKey="sessionLength" //donné vient sessionlength
+          scale="band"
+          stroke="white" //couleur en blanc
+          strokeWidth={2}
+          dot={false}
+          activeDot={{
+            //taille de valeur et couleur en blanc
+            fill: 'white',
+            strokeOpacity: '.5',
+            strokeWidth: '10',
+            r: 4,
+          }}
+          unit=" min"
         />
       </LineChart>
     </ResponsiveContainer>

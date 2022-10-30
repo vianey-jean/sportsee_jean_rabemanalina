@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import ErrorPage from '../errorPage'
+import ErrorPage from '../errorPage/errorPage'
 
 import flammeRouge from '../../assets/flammeRouge.svg'
 import chicken from '../../assets/PouletBleu.svg'
@@ -14,15 +14,15 @@ import getUserActivity from '../../model/dataFormater/userActivityStore'
 import getUserAverageSessions from '../../model/dataFormater/userAverageSessionsStore'
 import getUserPerformance from '../../model/dataFormater/userPerformanceStore'
 
-import Activity from '../../view/activity'
-import AverageSession from '../../view/averageSession'
-import Perform from '../../view/perform'
-import Score from '../../view/score'
-import CardInfo from '../../view/cardInfo'
-import Header from '../../view/header'
-import Loader from '../../view/loader'
+import Activity from '../../view/activity/activity'
+import AverageSession from '../../view/averageSession/averageSession'
+import Perform from '../../view/perform/perform'
+import Score from '../../view/score/score'
+import CardInfo from '../../view/cardInfo/cardInfo'
+import Header from '../../view/header/header'
+import Loader from '../../view/loader/loader'
 
-import './_tableau2Bord.scss'
+import './_tableauDeBord.scss'
 
 /**
  * Tableau2Bord

@@ -7,7 +7,6 @@ import './_errorPage.scss'
  * @returns {React.ReactElement} JSX.Element error page
  */
 
-
 const ErrorPage = () => {
   return (
     <div className="errorPageContainer">

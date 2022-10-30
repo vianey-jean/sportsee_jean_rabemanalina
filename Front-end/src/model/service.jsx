@@ -1,5 +1,7 @@
+// const dotenv = require('dotenv');
+// dotenv.config();
 
-let mock = true
+let mock = process.env.REACT_APP_DEVELOPMENT
 
 /**
  *Fetch user main datas
@@ -17,12 +19,14 @@ export const fetchMainDatas = async (userId) => {
         .then((data) => data.USER_MAIN_DATA)
       return userMainDatas.filter((el) => el.id + '' === userId)[0]
     } catch (err) {
-      return console.log('===erruer===',  err)
+      return console.log('===erruer===', err)
     }
   } else {
     console.log('Donné api')
     try {
-      const userMainDatas = await fetch(`${process.env.REACT_APP_API_URL}+${userId}`)
+      const userMainDatas = await fetch(
+        `${process.env.REACT_APP_API_URL}+${userId}`
+      )
         .then((res) => res.json())
         .then((data) => data)
       return userMainDatas.data

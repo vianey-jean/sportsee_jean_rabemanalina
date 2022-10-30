@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 
 /**
  * View - RadarChart Graph of performance
-  * @param {Object[]}  userPerform - The different types of performances
+ * @param {Object[]}  userPerform - The different types of performances
  * @param {number}  userPerform[].value - Performance values
  * @param {number}  userPerform[].kind - Types of performances
  * @returns {React.ReactElement} JSX.Element - Graph of performance

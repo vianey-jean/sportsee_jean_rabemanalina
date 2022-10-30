@@ -17,14 +17,14 @@ import PropTypes from 'prop-types'
  * @param {String} activity[].day
  * @param {Number} activity[].kilogram - array activity on kg
  * @param {Number} activity[].calories - array activity on kcal
- * @returns {React.ReactElement} JSX.Element - physical activity chart 
+ * @returns {React.ReactElement} JSX.Element - physical activity chart
  * @see https://recharts.org/en-US/api/Barchart
  */
-
 
 const Activity = ({ activity }) => {
   const CustomTooltipActivity = ({ active, payload }) => {
     if (active) {
+      //les valeur des donné de l'activité
       return (
         <div className="customTooltipActivity">
           <p>{`${payload[0].value}Kg`}</p>
@@ -63,7 +63,7 @@ const Activity = ({ activity }) => {
             fill="#282D30" //sa couleur
             barSize={7} //taille
             radius={[3, 3, 0, 0]} //radius
-            unit=" kg"  //unité
+            unit=" kg" //unité
             name="Poids (kg)"
           />
 
@@ -73,11 +73,11 @@ const Activity = ({ activity }) => {
             fill="#E60000" // sa couleur
             barSize={7} // sa taille
             radius={[3, 3, 0, 0]} //radius
-            unit=" Kcal"   //unite
+            unit=" Kcal" //unite
             name="Calories brûlées (kCal)"
           />
 
-            <XAxis
+          <XAxis
             dataKey="day"
             tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }} //taille et couleur de mesure du jour au dessous de la barre (unité jour)
             tickLine={false}
@@ -86,7 +86,7 @@ const Activity = ({ activity }) => {
           />
 
           <YAxis
-            yAxisId={0}  // la barre de mesure la première
+            yAxisId={0} // la barre de mesure la première
             dataKey="kilogram" //donné en kg
             stroke="#9B9EAC" //sa couleur
             orientation="right" //son orientation à droite
@@ -96,7 +96,7 @@ const Activity = ({ activity }) => {
             domain={['dataMin - 1', 'dataMax + 2']}
           />
           <YAxis
-            yAxisId={1}  //la barre de mesure la deuxième
+            yAxisId={1} //la barre de mesure la deuxième
             dataKey="calories"
             hide={true} //donné en calorie
             domain={['dataMin - 100', 'dataMax + 100']} //mise en place la mesure en horizontale les calories

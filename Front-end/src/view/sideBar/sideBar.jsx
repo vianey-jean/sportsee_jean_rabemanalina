@@ -1,5 +1,5 @@
 import React from 'react'
-import NavLogo from '../navLogo'
+import NavLogo from '../navLogo/navLogo'
 import meditation from '../../assets/meditation.svg'
 import nageur from '../../assets/nageur.svg'
 import cycliste from '../../assets/cycliste.svg'
@@ -10,10 +10,10 @@ import PropTypes from 'prop-types'
 /**
  * View - SideBar
  * * Logos
-   * @param {yoga} yoga // yogaLogo
-   * @param {natation} natation // natationaLogo
-   * @param {cycle} cycle // cycleLogo
-   * @param {force} force  // forceLogo
+ * @param {yoga} yoga // yogaLogo
+ * @param {natation} natation // natationaLogo
+ * @param {cycle} cycle // cycleLogo
+ * @param {force} force  // forceLogo
  * @returns {React.ReactElement} JSX.Element - SideBar component
  */
 

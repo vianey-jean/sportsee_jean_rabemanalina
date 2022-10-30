@@ -12,9 +12,8 @@ const NavLogo = ({ icone }) => {
   return (
     <div className="imgContainer">
       <NavLink to="/">
-      <img src={icone} alt="sport" />
+        <img src={icone} alt="sport" />
       </NavLink>
-      
     </div>
   )
 }
