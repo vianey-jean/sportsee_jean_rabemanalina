@@ -34,7 +34,7 @@ const Home = () => {
               <p>Ratorez</p>
             </div>
           </NavLink>
-          <NavLink className="navlink" to="/errorPage">
+          <NavLink className="navlink" to="/20">
             <div className="userCard">
               <div className="imgContainer">
                 <img src={john} alt="john " />
