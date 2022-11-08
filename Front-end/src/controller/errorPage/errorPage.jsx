@@ -1,13 +1,13 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import './_errorPage.scss'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './_errorPage.scss';
 
-/**
- * ERROR PAGE
- * @returns {React.ReactElement} JSX.Element error page
+/** Creation of 404 error page with link to homepage
+ *  *
+  @returns {React.ReactElement} JSX.Element error page
  */
 
-const ErrorPage = () => {
+const Error404 = () => {
   return (
     <div className="errorPageContainer">
       <h1>Erreur 404</h1>
@@ -16,7 +16,7 @@ const ErrorPage = () => {
         retour à l'accueil
       </NavLink>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorPage
+export default Error404;

@@ -1,35 +1,38 @@
-import React from 'react'
-import './_nav.scss'
-import logo from '../../assets/logo.svg'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/sportSeeLogo.png';
+import './_nav.scss';
+
 /**
- * Vew - Nav, Display the application's Nav with navigation
+ *  Vew - Nav, Display the application's Nav with navigation
+ * @component
  * @returns {React.ReactElement} JSX.Element - Nav component
  */
-const Nav = () => {
+
+const Navbar = () => {
   return (
-    <header className="topNav">
-      <NavLink to="/">
-        <img src={logo} alt="logo" />
+    <section className='topNav'>
+      <NavLink to='/'>
+          <img src={logo} alt='logo SportSee' />
       </NavLink>
-      <nav className="navigation">
+      <nav className='navigation'>
         <ul>
-          <NavLink className="accueil" to="/">
-            Accueil
+          <NavLink to='/' className='accueil'>
+            <li>Accueil</li>
           </NavLink>
-          <NavLink className="navig" to="/">
+          <NavLink to='' className='navig'>
             <li>Profil</li>
           </NavLink>
-          <NavLink className="navig" to="/">
+          <NavLink to='' className='navig'>
             <li>Réglage</li>
           </NavLink>
-          <NavLink className="navig" to="/">
+          <NavLink to='' className='navig'>
             <li>Communauté</li>
           </NavLink>
         </ul>
       </nav>
-    </header>
-  )
-}
+    </section>
+  );
+};
 
-export default Nav
+export default Navbar;

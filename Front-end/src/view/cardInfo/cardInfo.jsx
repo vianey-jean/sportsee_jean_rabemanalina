@@ -1,35 +1,40 @@
-import React from 'react'
-import './_cardInfo.scss'
-import PropTypes from 'prop-types'
-/**
- * Card info component
- * @param {string} icone
- * @param {number} number
- * @param {string} unit
- * @param {string} type
- * @returns {ReactElement} card info of daily intake
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import './_cardInfo.scss';
+
+/** Card info view
+ * @component
+ * @param {String} image - icons
+ * @param {Integer} data - value number
+ * @param {String} unit - unit
+ * @param {String} text - macronutrient text
+ * @returns {JSX.Element} cards view
  */
-const CardInfo = ({ icone, number, unit, type }) => {
+
+const MacronutrientCard = ({ icon, data, unit, text }) => {
   return (
-    <div className="cardInfoContainer">
-      <div className="imgContainer" id={type}>
-        <img src={icone} alt="icone" />
+    <div className='cardInfoContainer'>
+      <div className="imgContainer" >
+        <img src={icon} alt="icone" />
       </div>
-      <div>
-        <p className="numberAndUnit">
-          {number}
+      <div >
+      <p className="numberAndUnit">
+          {data}
           {unit}
-        </p>
-        <p className="type">{type}</p>
+          </p>
+        <p className='type'>{text}</p>
       </div>
     </div>
-  )
-}
-CardInfo.propTypes = {
-  icone: PropTypes.string,
-  number: PropTypes.number,
-  unit: PropTypes.string,
-  type: PropTypes.string,
-}
+  );
+};
 
-export default CardInfo
+export default MacronutrientCard;
+
+//Proptypes
+MacronutrientCard.propTypes = {
+  icon: PropTypes.string.isRequired,
+  data: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};

@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
 import {
-  Line,
-  LineChart,
   ResponsiveContainer,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
-} from 'recharts'
-import './_averageSession.scss'
-import PropTypes from 'prop-types'
+  Rectangle,
+} from 'recharts';
+import PropTypes from 'prop-types';
+
+import './_averageSession.scss';
 
 /**
  * View - LineChart Graph of session Longer
@@ -18,88 +21,118 @@ import PropTypes from 'prop-types'
  * @returns {React.ReactElement} JSX.Element - average session chart
  */
 
-const AverageSession = ({ average }) => {
-  /**
-   * CustomTooltipAverage
-   * @param {boolean} active cursor in graph ?
-   * @param {object} payload contain of props
-   * @returns {HTMLElement} custom tooltip
-   */
-  const CustomTooltipAverage = ({ active, payload }) => {
-    if (active && payload[0].payload.day !== '') {
-      return (
-        <div className="customTooltipAverage">
-          <p className="pCustomTooltipAverage">{`${payload[0].value}min`}</p>
-        </div>
-      )
-    }
-
-    return null
+const CustomTooltip = ({ active, payload }) => {
+  if (active) {
+    return (
+      <div className='customTooltipSession'>
+        <p className='tooltipDataSession'>{`${payload[0].value} `}min</p>
+      </div>
+    );
   }
-  let div = document.querySelector('.averageSessions')
-
-  const gradientBackground = (e) => {
-    if (e.isTooltipActive === true) {
-      let windowWidth = div.clientWidth
-      let mouseXpercentage = Math.round(
-        (e.activeCoordinate.x / windowWidth) * 100
-      )
-      div.style.background = `linear-gradient(90deg, rgba(255,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,1.5) ${mouseXpercentage}%, rgba(175,0,0,1.5) 100%)`
-    }
-  }
-
-  const defaultBackground = (e) => {
-    div.style.background = 'red'
-  }
+  return null;
+};
+/**
+ * @returns a grey rectangle displayed with mouth moving over the chart
+ */
+const CustomCursor = ({ points }) => {
   return (
-    <ResponsiveContainer
-      className="lineGraphContainer"
-      height="68%"
-      width="100%"
-    >
-      <LineChart
-        data={average}
-        margin={{ left: -80, right: -10 }}
-        className="lineChart"
-        onMouseMove={gradientBackground}
-        onMouseLeave={defaultBackground}
-      >
-        <Tooltip
-          content={<CustomTooltipAverage />}
-          s
-          cursor={{ opacity: 0.4 }}
-        />
-        <XAxis //couleur et opacité du lettre du jour
-          dataKey="day"
-          tick={{ fill: 'white', opacity: '.7' }}
-          tickLine={false}
-          tickMargin={5}
-          interval="preserveStartEnd"
-          axisLine={false}
-        />
-        <YAxis domain={['dataMin-10', 'dataMax+5']} stroke="none" />
-        <Line
-          type="natural" //type du trail natural
-          dataKey="sessionLength" //donné vient sessionlength
-          scale="band"
-          stroke="white" //couleur en blanc
-          strokeWidth={2}
-          dot={false}
-          activeDot={{
-            //taille de valeur et couleur en blanc
-            fill: 'white',
-            strokeOpacity: '.5',
-            strokeWidth: '10',
-            r: 4,
-          }}
-          unit=" min"
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  )
-}
-AverageSession.propTypes = {
-  average: PropTypes.array.isRequired,
-}
+    <Rectangle
+      fill='#000000'
+      opacity={0.2}
+      x={points[1].x}
+      width={1000}
+      height={300}
+    />
+  );
+};
 
-export default AverageSession
+/**
+ * Display user's daily activity charts
+ * @component
+ * @param {Array} sessions - user sessions datas
+ * @returns {JSX.Element} SessionsGraph component
+ */
+
+const AverageSessionTime = ({ sessions }) => {
+  return (
+    <div className='sessionChart'>
+      <ResponsiveContainer height="68%" width='100%' aspect={1}>
+        <LineChart
+          style={{ backgroundColor: '#FF0000' }}
+          width={258}
+          height={263}
+          data={sessions}
+          margin={{
+            top: 50,
+            right: -2,
+            left: -60,
+            bottom: 10,
+          }}
+        >
+          <CartesianGrid vertical={false} horizontal={false} />
+          <XAxis
+            dataKey="day"
+            tick={{ fill: 'white', opacity: '.7' }}
+            tickLine={false}
+            tickMargin={5}
+            interval="preserveStartEnd"
+            axisLine={false}
+          />
+          <YAxis
+           domain={['dataMin-10', 'dataMax+5']} stroke="none" 
+          />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
+          <Line
+            type="natural" //type du trail natural
+            dataKey="sessionLength" //donné vient sessionlength
+            scale="band"
+            stroke="white" //couleur en blanc
+            strokeWidth={2}
+            dot={false}
+            activeDot={{
+              //taille de valeur et couleur en blanc
+              fill: 'white',
+              strokeOpacity: '.5',
+              strokeWidth: '10',
+              r: 4,
+            }}
+            unit=" min"
+          />
+          <text
+            className='graphTitle'
+            x='12%'
+            y='15%'
+            width={147}
+            height={48}
+            textAnchor='start'
+            dominantBaseline='middle'
+            fill='#FFFFFF'
+            style={{ fontWeight: 500, opacity: 0.5 }}
+          >
+            Durée moyenne des{' '}
+          </text>
+          <text
+            className='graphTitle'
+            x='12%'
+            y='25%'
+            width={147}
+            height={48}
+            textAnchor='start'
+            dominantBaseline='middle'
+            fill='#FFFFFF'
+            style={{ fontWeight: 500, opacity: 0.5 }}
+          >
+            sessions
+          </text>
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+export default AverageSessionTime;
+
+//Proptypes
+AverageSessionTime.propTypes = {
+  sessions: PropTypes.array.isRequired,
+};

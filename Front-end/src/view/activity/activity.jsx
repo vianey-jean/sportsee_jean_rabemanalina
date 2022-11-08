@@ -1,64 +1,98 @@
-import React from 'react'
-import './_activity.scss'
+import React from 'react';
 import {
-  CartesianGrid,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
+  CartesianGrid,
+  Legend,
   Tooltip,
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-} from 'recharts'
-import PropTypes from 'prop-types'
+} from 'recharts';
+import PropTypes from 'prop-types';
+
+import './_activity.scss';
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className='customTooltip'>
+        <p className='tooltipData'>{`${payload[0].value} `}g</p>
+        <p className='tooltipData'>{`${payload[1].value} `}Kcal</p>
+      </div>
+    );
+  }
+};
 
 /**
  * View - BarChart Graph of Daily activity
- * @param {Object[]} activity user's physical activity data
- * @param {String} activity[].day
- * @param {Number} activity[].kilogram - array activity on kg
- * @param {Number} activity[].calories - array activity on kcal
+ * @param {Object[]} activityValues user's physical activity data
+ * @param {String} activityValues[].day
+ * @param {Number} activityValues[].kilogram - array activity on kg
+ * @param {Number} activityValues[].calories - array activity on kcal
  * @returns {React.ReactElement} JSX.Element - physical activity chart
  * @see https://recharts.org/en-US/api/Barchart
  */
 
-const Activity = ({ activity }) => {
-  const CustomTooltipActivity = ({ active, payload }) => {
-    if (active) {
-      //les valeur des donné de l'activité
-      return (
-        <div className="customTooltipActivity">
-          <p>{`${payload[0].value}Kg`}</p>
-          <p>{`${payload[1].value}Kcal`}</p>
-        </div>
-      )
-    }
-    return null
-  }
+const DailyActivity = ({ activityValues }) => {
+  // console.log(activityValues);
 
   return (
-    <>
-      <div className="description">
-        <p>Activité quotidienne</p>
-        <ul>
-          <li id="weight">Poids</li>
-          <span className="kg">(kg)</span>
-          <li className="cal">Calories brûlées</li>
-          <span className="kcal">(kCal)</span>
-        </ul>
-      </div>
-      <ResponsiveContainer height={270} width="100%">
-        <BarChart data={activity} className="barChart">
-          <Tooltip
-            content={<CustomTooltipActivity />}
-            cursor={{ opacity: 0.4 }}
-          />
-          <CartesianGrid
+    <div className='activityGraph'>
+      <BarChart
+        width={835}
+        height={320}
+        data={activityValues}
+        margin={{
+          top: 80,
+          right: 50,
+          left: 45,
+          bottom: 20,
+        }}
+        barSize={7}
+        barGap={8}
+        barCategoryGap={54}
+      >
+        {' '}
+        <CartesianGrid
             strokeDasharray="2 2" //Taille des traits de mesures en horizontal mais pas verstical
             horizontal={true}
             vertical={false}
           />
-          <Bar
-            yAxisId={0} //barre le premier (a gauche)
+        <XAxis
+          dataKey="day"
+            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }} //taille et couleur de mesure du jour au dessous de la barre (unité jour)
+            tickLine={false}
+            tickSize={16}
+            stroke="#DEDEDE"
+        />
+        <YAxis
+          tickLine={false}
+          orientation='right'
+          axisLine={false}
+          tick={{ fill: '#9B9EAC', fontWeight: 500, fontSize: 14 }}
+          tickMargin={45}
+          minTickGap={27}
+        />
+        <Tooltip content={CustomTooltip}
+        cursor={{ opacity: 0.4 }}
+         />
+        <Legend // change styles in formatter for the Bar component text
+          verticalAlign='top'
+          align='right'
+          iconType={'circle'}
+          iconSize={8}
+          width={277}
+          height={25}
+          wrapperStyle={{ top: 35, right: 26 }}
+          formatter={(value) => {
+            return (
+              <span style={{ color: '#74798c', fontSize: 14, fontWeight: 500 }}>
+                {value}
+              </span>
+            );
+          }}
+        />
+      <Bar
             dataKey="kilogram" //la barre verticale celle en KG
             fill="#282D30" //sa couleur
             barSize={7} //taille
@@ -68,7 +102,6 @@ const Activity = ({ activity }) => {
           />
 
           <Bar
-            yAxisId={1} //barre deuxième (celle à droite)
             dataKey="calories" //la barre horizontale en calorie
             fill="#E60000" // sa couleur
             barSize={7} // sa taille
@@ -76,37 +109,26 @@ const Activity = ({ activity }) => {
             unit=" Kcal" //unite
             name="Calories brûlées (kCal)"
           />
+        <text
+          className='graphTitle'
+          x='5%'
+          y='15%'
+          width={147}
+          height={48}
+          textAnchor='start'
+          dominantBaseline='middle'
+          fill='#20253A'
+          style={{ fontWeight: 500 }}
+        >
+          Activité quotidienne{' '}
+        </text>
+      </BarChart>
+    </div>
+  );
+};
 
-          <XAxis
-            dataKey="day"
-            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }} //taille et couleur de mesure du jour au dessous de la barre (unité jour)
-            tickLine={false}
-            tickSize={16}
-            stroke="#DEDEDE"
-          />
-
-          <YAxis
-            yAxisId={0} // la barre de mesure la première
-            dataKey="kilogram" //donné en kg
-            stroke="#9B9EAC" //sa couleur
-            orientation="right" //son orientation à droite
-            axisLine={false}
-            tickLine={false}
-            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }}
-            domain={['dataMin - 1', 'dataMax + 2']}
-          />
-          <YAxis
-            yAxisId={1} //la barre de mesure la deuxième
-            dataKey="calories"
-            hide={true} //donné en calorie
-            domain={['dataMin - 100', 'dataMax + 100']} //mise en place la mesure en horizontale les calories
-          />
-        </BarChart>
-      </ResponsiveContainer>
-    </>
-  )
-}
-Activity.propTypes = {
-  activity: PropTypes.array.isRequired,
-}
-export default Activity
+export default DailyActivity;
+//Proptypes
+DailyActivity.propTypes = {
+  activityValues: PropTypes.array.isRequired,
+};

@@ -1,172 +1,124 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import MacronutrientCard from '../../view/cardInfo/cardInfo';
+import DailyActivity from '../../view/activity/activity';
+import Performances from '../../view/perform/perform';
+import ScoreChart from '../../view/score/score';
 
-import ErrorPage from '../errorPage/errorPage'
+import { headerUserData } from '../../model/providers';
+import { activitiesUserData } from '../../model/providers';
+import { userSessionsTimeData } from '../../model/providers';
+import { userPerformancesData } from '../../model/providers';
 
-import flammeRouge from '../../assets/flammeRouge.svg'
-import chicken from '../../assets/PouletBleu.svg'
-import apple from '../../assets/pommeJaune.svg'
-import burger from '../../assets/cheeseburger.svg'
-
-import getMainDatas from '../../model/dataFormater/mainDataStore'
-import getUserActivity from '../../model/dataFormater/userActivityStore'
-import getUserAverageSessions from '../../model/dataFormater/userAverageSessionsStore'
-import getUserPerformance from '../../model/dataFormater/userPerformanceStore'
-
-import Activity from '../../view/activity/activity'
-import AverageSession from '../../view/averageSession/averageSession'
-import Perform from '../../view/perform/perform'
-import Score from '../../view/score/score'
-import CardInfo from '../../view/cardInfo/cardInfo'
-import Header from '../../view/header/header'
 import Loader from '../../view/loader/loader'
+import caloriesIcon from '../../assets/flammeRouge.svg';
+import carbsIcon from '../../assets/pommeJaune.svg';
+import fatIcon from '../../assets/cheeseburger.svg';
+import proteinIcon from '../../assets/PouletBleu.svg';
 
-import './_tableauDeBord.scss'
+
+import './_tableauDeBord.scss';
+import AverageSessionTime from '../../view/averageSession/averageSession';
 
 /**
- * Tableau2Bord
+ * TableauDeBord
  * Function that returns the user page
  * @returns {React.ReactElement} JSX.Element - the user main page with API data
  */
-const Tableau2Bord = () => {
-  let { userId } = useParams()
-  console.log(parseInt(userId))
 
-  const [userMainDatas, setUserMainDatas] = useState()
-  const [userActivity, setUserActivity] = useState()
-  const [userAverageSessions, setUserAverageSessions] = useState()
-  const [userPerformance, setUserPerformance] = useState()
-  const [loading, setLoading] = useState(true)
-  const [goodUrl, setGoodUrl] = useState(true)
+const Dashboard = () => {
+  const { userId } = useParams();
+  // console.log(userId);
 
-  // DATAS PROCESSING
-  const loadUserMainDatas = async () => {
-    setLoading(true)
-    const datas = await getMainDatas(userId)
-    datas && setUserMainDatas(datas)
-  }
-
-  const loadUserActivity = async () => {
-    const datas = await getUserActivity(userId)
-    setUserActivity(datas)
-  }
-  const loadUserAverageSessions = async () => {
-    const datas = await getUserAverageSessions(userId)
-    setUserAverageSessions(datas)
-  }
-  const loadUserPerformance = async () => {
-    const datas = await getUserPerformance(userId)
-    setUserPerformance(datas)
-    setLoading(false)
-  }
+  const [datas, setDatas] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    loadUserMainDatas()
-    loadUserActivity()
-    loadUserAverageSessions()
-    loadUserPerformance()
-  }, [userId])
-  console.log(userMainDatas)
+    (async () => {
+      try {
+        const userDatas = await headerUserData(userId);
+        const userActivitiesDatas = await activitiesUserData(userId);
+        const userSessionsDatas = await userSessionsTimeData(userId);
+        const userPerformanceData = await userPerformancesData(userId);
+        setDatas({
+          userDatas,
+          userActivitiesDatas,
+          userSessionsDatas,
+          userPerformanceData,
+        });
+        setIsLoading(false);
+      } catch (error) {
+        console.log("sorry, there's an error :", error);
+        window.location = '/error';
+      }
+    })();
+  }, [userId]);
 
-  useEffect(() => {
-    userMainDatas && console.log(userMainDatas)
-    userMainDatas && userMainDatas.id !== ''
-      ? setGoodUrl(true)
-      : setGoodUrl(false)
-  }, [userMainDatas])
   return (
-    <div>
-    
-      {!loading ? (
-        <>
-          <div className="mainContent">
-            {console.log(goodUrl)}
-            {goodUrl ? (
-              <>
-                <Header userName={userMainDatas.userInfos.firstName} />
-
-                <div className="graphsAndDailyContainer">
-                  <section className="graphsContainer">
-                    <div className="dailyActivity">
-                      {userActivity ? (
-                        <Activity activity={userActivity} />
-                      ) : null}
-                    </div>
-                    <div className="otherGraph">
-                      <div className="averageSessions">
-                        <p className="pDescription">
-                          Durée moyenne des <br />
-                          sessions
-                        </p>
-                        {userAverageSessions ? (
-                          <AverageSession average={userAverageSessions} />
-                        ) : null}
-                      </div>
-                      <div className="performances">
-                        {userPerformance ? (
-                          <Perform performances={userPerformance} />
-                        ) : null}
-                      </div>
-                      <div className="score">
-                        <p className="pScore">Score</p>
-                        <div className="radarBarChart">
-                          <Score
-                            userMainDatas={userMainDatas}
-                            className="radar"
-                          />
-                          <div className="userObjectif">
-                            <p className="percent">
-                              {' '}
-                              {userMainDatas.scores[1].score}%
-                            </p>
-                            <p>
-                              de votre <br />
-                              objectif
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                  <aside className="dailyIntake">
-                    <CardInfo
-                      icone={flammeRouge}
-                      number={userMainDatas.keyData.calorieCount}
-                      unit={'kCal'}
-                      type={'Calories'}
-                    />
-                    <CardInfo
-                      icone={chicken}
-                      number={userMainDatas.keyData.proteinCount}
-                      unit={'g'}
-                      type={'Protéines'}
-                    />
-                    <CardInfo
-                      icone={apple}
-                      number={userMainDatas.keyData.carbohydrateCount}
-                      unit={'g'}
-                      type={'Glucides'}
-                    />
-                    <CardInfo
-                      icone={burger}
-                      number={userMainDatas.keyData.lipidCount}
-                      unit={'g'}
-                      type={'Lipides'}
-                    />
-                  </aside>
+    <>
+      <div className='dashboard'>
+        {!isLoading ? (
+          <>
+            <div className='dashboardHeader'>
+              <h1>
+                Bonjour{' '}
+                <span className='dashboardHeader__username'>
+                  {' '}
+                  {datas.userDatas.userFirstname}
+                </span>
+              </h1>
+              <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            </div>
+            <div className='dashboardContent'>
+              <div className="graphsContainer">
+                <DailyActivity
+                  activityValues={datas.userActivitiesDatas.sessions}
+                />
+                <div className='charts'>
+                  <AverageSessionTime
+                    sessions={datas.userSessionsDatas.sessionsData}
+                  />
+                  <Performances
+                    performance={datas.userPerformanceData.performData}
+                  />
+                  <ScoreChart score={datas.userDatas.score[0].value} />
                 </div>
-              </>
-            ) : (
-              <ErrorPage />
-            )}
-          </div>
-        </>
-      ) : (
-       <Loader />
-      )}
-    </div>
-  )
-}
+              </div>
+              <div className='dailyIntake'>
+                <MacronutrientCard
+                  icon={caloriesIcon}
+                  data={datas.userDatas.keyData.calorieCount}
+                  unit='Kcal'
+                  text='Calories'
+                />
+                <MacronutrientCard
+                  icon={proteinIcon}
+                  data={datas.userDatas.keyData.proteinCount}
+                  unit='g'
+                  text='Protéines'
+                />
+                <MacronutrientCard
+                  icon={carbsIcon}
+                  data={datas.userDatas.keyData.lipidCount}
+                  unit='g'
+                  text='Glucides'
+                />
+                <MacronutrientCard
+                  icon={fatIcon}
+                  data={datas.userDatas.keyData.carbohydrateCount}
+                  unit='g'
+                  text='Lipides'
+                />
+              </div>
+            </div>
+          </>
+        ): (
+          <Loader />
+         )}
+      </div>
+    </>
+  );
+};
 
-export default Tableau2Bord
+export default Dashboard;

@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#CardInfo">CardInfo</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#fetchMainDatas">fetchMainDatas</a></li><li><a href="global.html#fetchUserActivity">fetchUserActivity</a></li><li><a href="global.html#fetchUserAverageSessions">fetchUserAverageSessions</a></li><li><a href="global.html#fetchUserPerformance">fetchUserPerformance</a></li><li><a href="global.html#getMainDatas">getMainDatas</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Nav">Nav</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Perform">Perform</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#Tableau2Bord">Tableau2Bord</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#activitiesUserData">activitiesUserData</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSessionTime">AverageSessionTime</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#DashboardNavigation">DashboardNavigation</a></li><li><a href="global.html#Error404">Error404</a></li><li><a href="global.html#getActivitiesUserData">getActivitiesUserData</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserPerformances">GetUserPerformances</a></li><li><a href="global.html#GetUserScores">GetUserScores</a></li><li><a href="global.html#headerUserData">headerUserData</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#MacronutrientCard">MacronutrientCard</a></li><li><a href="global.html#mock">mock</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Performances">Performances</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#userPerformancesData">userPerformancesData</a></li><li><a href="global.html#userSessionsTimeData">userSessionsTimeData</a></li></ul>
 </nav>
 
 <div id="main">
@@ -42,41 +42,44 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import './_cardInfo.scss'
-import PropTypes from 'prop-types'
-/**
- * Card info component
- * @param {string} icone
- * @param {number} number
- * @param {string} unit
- * @param {string} type
- * @returns {ReactElement} card info of daily intake
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import PropTypes from 'prop-types';
+
+import './_cardInfo.scss';
+
+/** Card info view
+ * @component
+ * @param {String} image - icons
+ * @param {Integer} data - value number
+ * @param {String} unit - unit
+ * @param {String} text - macronutrient text
+ * @returns {JSX.Element} cards view
  */
-const CardInfo = ({ icone, number, unit, type }) => {
+
+const MacronutrientCard = ({ icon, data, unit, text }) => {
   return (
-    &lt;div className="cardInfoContainer">
-      &lt;div className="imgContainer" id={type}>
-        &lt;img src={icone} alt="icone" />
-      &lt;/div>
-      &lt;div>
-        &lt;p className="numberAndUnit">
-          {number}
+    &lt;div className='macronutrientCard'>
+      &lt;img src={icon} alt='' className='macronutrientCard__icons' />
+      &lt;div className='macronutrientCard__values'>
+        &lt;h3 className='macronutrientCard_units'>
+          {data}
           {unit}
-        &lt;/p>
-        &lt;p className="type">{type}&lt;/p>
+        &lt;/h3>
+        &lt;p className='macronutrientCard__texts'>{text}&lt;/p>
       &lt;/div>
     &lt;/div>
-  )
-}
-CardInfo.propTypes = {
-  icone: PropTypes.string,
-  number: PropTypes.number,
-  unit: PropTypes.string,
-  type: PropTypes.string,
-}
+  );
+};
 
-export default CardInfo
+export default MacronutrientCard;
+
+//Proptypes
+MacronutrientCard.propTypes = {
+  icon: PropTypes.string.isRequired,
+  data: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 </code></pre>
         </article>
     </section>
@@ -91,7 +94,7 @@ export default CardInfo
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Sun Oct 30 2022 20:20:30 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Wed Nov 09 2022 01:47:33 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

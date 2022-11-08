@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom'
 import Tableau2Bord from '../controller/tableauDeBord/tableauDeBord'
 import Home from '../controller/home/home'
 import ErrorPage from '../controller/errorPage/errorPage'
-import SideBar from '../view/sideBar/sideBar'
 import Nav from '../view/nav/nav'
+import SideBar from '../view/sideBar/sideBar'
 
 /**
  * Dom injector and creation of router
@@ -21,7 +21,7 @@ export const routes = [
         element: <Home />,
       },
       {
-        path: '/:userId',
+        path: '/user/:userId',
         element: <Tableau2Bord />, //on selection id par api
       },
       {

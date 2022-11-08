@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>view/loader/loader.jsx - Documentation</title>
+    <title>model/apiData/PerformancesDataFormater.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">view/loader/loader.jsx</h1>
+    <h1 class="page-title">model/apiData/PerformancesDataFormater.jsx</h1>
     
 
     
@@ -42,28 +42,41 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//import React et scss
-
-import React from 'react'
-import './_loader.scss'
-
-/**
- * Component - Loader, to loade the page wait a data
- * @returns {React.ReactElement} JSX.Element - loader element
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
+ * @classdesc User performances  datas formater
  */
+export default class PerformancesDataFormater {
+  /**
+   * The function takes in an object, and then assigns the values of the object to the properties of
+   * the class.
+   * @param {Object} kind - user kind of performance datas
+   * @param {Object} performances - performances datas
+   */
 
-function Loader() {
-  return (
-    &lt;div className="lds-ripple">
-      {' '}
-      {/**mettre dans div avec class lds-ripple */}
-      &lt;div>&lt;/div>
-      &lt;div>&lt;/div>
-    &lt;/div>
-  )
+  constructor(performances, kind) {
+    this.id = performances.userId;
+    this.kindOfPerform = this.KindOfPerformance(kind);
+    this.formatPerformData = performances.data.map((performance, kind) => ({
+      ...performance,
+      kind: this.kindOfPerform[kind],
+      value: performance.value,
+    }));
+    this.performData = this.formatPerformData.reverse();
+  }
+
+  KindOfPerformance() {
+    const formatPerform = [
+      'Cardio',
+      'Energie',
+      'Endurance',
+      'Force',
+      'Vitesse',
+      'Intensité',
+    ];
+    return formatPerform;
+  }
 }
-
-export default Loader
 </code></pre>
         </article>
     </section>

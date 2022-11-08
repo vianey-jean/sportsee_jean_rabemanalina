@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>model/fetch.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#activitiesUserData">activitiesUserData</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSessionTime">AverageSessionTime</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#DashboardNavigation">DashboardNavigation</a></li><li><a href="global.html#Error404">Error404</a></li><li><a href="global.html#getActivitiesUserData">getActivitiesUserData</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserPerformances">GetUserPerformances</a></li><li><a href="global.html#GetUserScores">GetUserScores</a></li><li><a href="global.html#headerUserData">headerUserData</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#MacronutrientCard">MacronutrientCard</a></li><li><a href="global.html#mock">mock</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Performances">Performances</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#userPerformancesData">userPerformancesData</a></li><li><a href="global.html#userSessionsTimeData">userSessionsTimeData</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">model/fetch.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * It fetches data from a server and returns it
+ * @param {Number} id - The id of the current user
+ * @returns {Promise}
+ */
+
+const mock = process.env.REACT_APP_DEVELOPMENT;
+
+export const getMainUserData = async (userId) => {
+  let url = `${process.env.REACT_APP_API_URL}+${userId}`;
+
+  try {
+    if (mock) {
+      url = `/data/${userId}.json`;
+    }
+    const response = await fetch(url);
+   
+    const mainUserData = await response.json();
+    
+
+    return mainUserData.data;
+  } catch (error) {
+    console.log("sorry there's an error :", error);
+  }
+};
+
+/**
+ * It fetches data from a node server / or mockedData if true / and returns activities datas
+ * @param {Number} id - The id of the current user
+ * @returns {Promise}
+ */
+
+export const getActivitiesUserData = async (userId) => {
+  let url = `${process.env.REACT_APP_API_URL}+${userId}/activity`;
+
+  try {
+    if (mock) {
+      url = `/data/${userId}/activity.json`;
+    }
+    const response = await fetch(url);
+    // console.log(response);
+    const userActivitiesData = await response.json();
+    // console.log(userActivitiesData);
+    // console.log(userActivitiesData.data);
+    return userActivitiesData.data;
+  } catch (error) {
+    console.log("sorry there's an error :", error);
+  }
+};
+
+/**
+ * It fetches data from a url and returns the average session datas.
+ * @param {Number} userId - The id of the user
+ * @returns {Promise}
+ */
+export const GetUserAverageSessions = async (userId) => {
+  let url = `${process.env.REACT_APP_API_URL}+${userId}/average-sessions`;
+
+  try {
+    if (mock) {
+      url = `/data/${userId}/averageSession.json`;
+    }
+    const response = await fetch(url);
+    const averageSessionsTimeData = await response.json();
+    // console.log(averageSessionsTimeData.data);
+    return averageSessionsTimeData.data;
+  } catch (error) {
+    console.log("sorry there's an error :", error);
+  }
+};
+
+/**
+ * It fetches data from a url and returns the average session datas.
+ * @param {Number} userId - The id of the user
+ * @returns {Promise}
+ */
+export const GetUserPerformances = async (userId) => {
+  let url = `${process.env.REACT_APP_API_URL}+${userId}/performance`;
+
+  try {
+    if (mock) {
+      url = `/data/${userId}/performance.json`;
+    }
+    const response = await fetch(url);
+    const performancesData = await response.json();
+    console.log(performancesData.data);
+    return performancesData.data;
+  } catch (error) {
+    console.log("sorry there's an error :", error);
+  }
+};
+
+/**
+ * It fetches data from a url and returns the average session datas.
+ * @param {Number} userId - The id of the user
+ * @returns {Promise}
+ */
+export const GetUserScores = async (userId) => {
+  let url = `${process.env.REACT_APP_API_URL}+${userId}/performance`;
+
+  try {
+    if (mock) {
+      url = `/data/${userId}/performance.json`;
+    }
+    const response = await fetch(url);
+    const performancesData = await response.json();
+    console.log(performancesData.data);
+    return performancesData.data;
+  } catch (error) {
+    console.log("sorry there's an error :", error);
+  }
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Wed Nov 09 2022 01:47:33 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

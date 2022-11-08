@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>view/loader/loader.jsx - Documentation</title>
+    <title>model/apiData/MainDataFormater.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">view/loader/loader.jsx</h1>
+    <h1 class="page-title">model/apiData/MainDataFormater.jsx</h1>
     
 
     
@@ -42,28 +42,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//import React et scss
-
-import React from 'react'
-import './_loader.scss'
-
-/**
- * Component - Loader, to loade the page wait a data
- * @returns {React.ReactElement} JSX.Element - loader element
+            <pre class="prettyprint source linenums"><code>/**
+ * @class
+ * @classdesc User mainDatas formater
  */
 
-function Loader() {
-  return (
-    &lt;div className="lds-ripple">
-      {' '}
-      {/**mettre dans div avec class lds-ripple */}
-      &lt;div>&lt;/div>
-      &lt;div>&lt;/div>
-    &lt;/div>
-  )
-}
+export default class MainDatasFormater {
+  /**
+   * assigns the values from an object to the properties of the class.
+   * @param {Object} datas - users mainDatas
+   */
 
-export default Loader
+  constructor(data) {
+    this.id = data.id;
+    this.userFirstname = data.userInfos.firstName;
+    this.keyData = data.keyData;
+    this.todayScore = data.todayScore || data.score;
+    this.score = this.formatScore(this.todayScore);
+  }
+
+  formatScore() {
+    return [{ value: this.todayScore * 100 }];
+  }
+}
 </code></pre>
         </article>
     </section>

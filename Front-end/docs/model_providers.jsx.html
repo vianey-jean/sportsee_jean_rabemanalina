@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>view/loader/loader.jsx - Documentation</title>
+    <title>model/providers.jsx - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">view/loader/loader.jsx</h1>
+    <h1 class="page-title">model/providers.jsx</h1>
     
 
     
@@ -42,28 +42,83 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//import React et scss
+            <pre class="prettyprint source linenums"><code>import { getMainUserData } from './fetch.jsx';
+import { getActivitiesUserData } from './fetch.jsx';
+import { GetUserAverageSessions } from './fetch.jsx';
+import { GetUserPerformances } from './fetch.jsx';
 
-import React from 'react'
-import './_loader.scss'
+import MainDatasFormater from './apiData/MainDataFormater.jsx';
+import ActivitiesDataFormater from './apiData/ActivitiesDataFormater.jsx';
+import SessionsDataFormater from './apiData/SessionsDataFormater';
+import PerformancesDataFormater from './apiData/PerformancesDataFormater';
 
 /**
- * Component - Loader, to loade the page wait a data
- * @returns {React.ReactElement} JSX.Element - loader element
+ * @param userId - the id of the user
+ * @returns An array of objects with user mainDatas
  */
 
-function Loader() {
-  return (
-    &lt;div className="lds-ripple">
-      {' '}
-      {/**mettre dans div avec class lds-ripple */}
-      &lt;div>&lt;/div>
-      &lt;div>&lt;/div>
-    &lt;/div>
-  )
+export async function headerUserData(userId) {
+  let mainDatas = {};
+
+  mainDatas = await getMainUserData(userId);
+  // console.log(mainDatas);
+  // return mainDatas;  sans passage dans le MainDataFormater
+
+  const userData = new MainDatasFormater(mainDatas);
+  console.log(userData.keyData.calorieCount);
+  return userData;
 }
 
-export default Loader
+/**
+ * @param userId - the id of the user
+ * @returns An array of objects with user activities datas
+ */
+
+export async function activitiesUserData(userId) {
+  let activitiesDatas = {};
+
+  activitiesDatas = await getActivitiesUserData(userId);
+  console.log(activitiesDatas);
+  // return activitiesDatas;  sans passage dans le MainDataFormater
+
+  const userActivitiesData = new ActivitiesDataFormater(activitiesDatas);
+  // console.log(userActivitiesData); // check the activitiesData Formater in console
+  return userActivitiesData;
+}
+
+/**
+ * @param userId - the id of the user
+ * @returns An array of objects with user activities datas
+ */
+
+export async function userSessionsTimeData(userId) {
+  let sessionsData = {};
+
+  sessionsData = await GetUserAverageSessions(userId);
+  console.log(sessionsData);
+  // return sessionsData;  sans passage dans le SessionsDataFormater
+
+  const userAverageSessionsTimeData = new SessionsDataFormater(sessionsData);
+  // console.log(userActivitiesData); // check the activitiesData Formater in console
+  return userAverageSessionsTimeData;
+}
+
+/**
+ * @param userId - the id of the user
+ * @returns An array of objects with user performances datas
+ */
+
+export async function userPerformancesData(userId) {
+  let performancesData = {};
+
+  performancesData = await GetUserPerformances(userId);
+  console.log(performancesData);
+  // return performancesData;  sans passage dans le PerformancesDataFormater
+
+  const userPerformancesData = new PerformancesDataFormater(performancesData);
+  console.log(userPerformancesData); // check the PerformancesDataFormater in console
+  return userPerformancesData;
+}
 </code></pre>
         </article>
     </section>

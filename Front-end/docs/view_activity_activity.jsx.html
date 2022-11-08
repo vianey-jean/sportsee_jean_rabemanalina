@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#CardInfo">CardInfo</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#fetchMainDatas">fetchMainDatas</a></li><li><a href="global.html#fetchUserActivity">fetchUserActivity</a></li><li><a href="global.html#fetchUserAverageSessions">fetchUserAverageSessions</a></li><li><a href="global.html#fetchUserPerformance">fetchUserPerformance</a></li><li><a href="global.html#getMainDatas">getMainDatas</a></li><li><a href="global.html#getUserActivity">getUserActivity</a></li><li><a href="global.html#getUserAverageSessions">getUserAverageSessions</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Nav">Nav</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Perform">Perform</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#Tableau2Bord">Tableau2Bord</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#activitiesUserData">activitiesUserData</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#AverageSessionTime">AverageSessionTime</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#DashboardNavigation">DashboardNavigation</a></li><li><a href="global.html#Error404">Error404</a></li><li><a href="global.html#getActivitiesUserData">getActivitiesUserData</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserPerformances">GetUserPerformances</a></li><li><a href="global.html#GetUserScores">GetUserScores</a></li><li><a href="global.html#headerUserData">headerUserData</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#MacronutrientCard">MacronutrientCard</a></li><li><a href="global.html#mock">mock</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#NavLogo">NavLogo</a></li><li><a href="global.html#Performances">Performances</a></li><li><a href="global.html#routes">routes</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#userPerformancesData">userPerformancesData</a></li><li><a href="global.html#userSessionsTimeData">userSessionsTimeData</a></li></ul>
 </nav>
 
 <div id="main">
@@ -42,67 +42,101 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import './_activity.scss'
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import {
-  CartesianGrid,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
+  CartesianGrid,
+  Legend,
   Tooltip,
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-} from 'recharts'
-import PropTypes from 'prop-types'
+} from 'recharts';
+import PropTypes from 'prop-types';
+
+import './_activity.scss';
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active &amp;&amp; payload &amp;&amp; payload.length) {
+    return (
+      &lt;div className='customTooltip'>
+        &lt;p className='tooltipData'>{`${payload[0].value} `}g&lt;/p>
+        &lt;p className='tooltipData'>{`${payload[1].value} `}Kcal&lt;/p>
+      &lt;/div>
+    );
+  }
+};
 
 /**
  * View - BarChart Graph of Daily activity
- * @param {Object[]} activity user's physical activity data
- * @param {String} activity[].day
- * @param {Number} activity[].kilogram - array activity on kg
- * @param {Number} activity[].calories - array activity on kcal
+ * @param {Object[]} activityValues user's physical activity data
+ * @param {String} activityValues[].day
+ * @param {Number} activityValues[].kilogram - array activity on kg
+ * @param {Number} activityValues[].calories - array activity on kcal
  * @returns {React.ReactElement} JSX.Element - physical activity chart
  * @see https://recharts.org/en-US/api/Barchart
  */
 
-const Activity = ({ activity }) => {
-  const CustomTooltipActivity = ({ active, payload }) => {
-    if (active) {
-      //les valeur des donné de l'activité
-      return (
-        &lt;div className="customTooltipActivity">
-          &lt;p>{`${payload[0].value}Kg`}&lt;/p>
-          &lt;p>{`${payload[1].value}Kcal`}&lt;/p>
-        &lt;/div>
-      )
-    }
-    return null
-  }
+const DailyActivity = ({ activityValues }) => {
+  // console.log(activityValues);
 
   return (
-    &lt;>
-      &lt;div className="description">
-        &lt;p>Activité quotidienne&lt;/p>
-        &lt;ul>
-          &lt;li id="weight">Poids&lt;/li>
-          &lt;span className="kg">(kg)&lt;/span>
-          &lt;li className="cal">Calories brûlées&lt;/li>
-          &lt;span className="kcal">(kCal)&lt;/span>
-        &lt;/ul>
-      &lt;/div>
-      &lt;ResponsiveContainer height={270} width="100%">
-        &lt;BarChart data={activity} className="barChart">
-          &lt;Tooltip
-            content={&lt;CustomTooltipActivity />}
-            cursor={{ opacity: 0.4 }}
-          />
-          &lt;CartesianGrid
+    &lt;div className='activityGraph'>
+      &lt;BarChart
+        width={835}
+        height={320}
+        data={activityValues}
+        margin={{
+          top: 80,
+          right: 50,
+          left: 45,
+          bottom: 20,
+        }}
+        barSize={7}
+        barGap={8}
+        barCategoryGap={54}
+      >
+        {' '}
+        &lt;CartesianGrid
             strokeDasharray="2 2" //Taille des traits de mesures en horizontal mais pas verstical
             horizontal={true}
             vertical={false}
           />
-          &lt;Bar
-            yAxisId={0} //barre le premier (a gauche)
+        &lt;XAxis
+          dataKey="day"
+            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }} //taille et couleur de mesure du jour au dessous de la barre (unité jour)
+            tickLine={false}
+            tickSize={16}
+            stroke="#DEDEDE"
+        />
+        &lt;YAxis
+          tickLine={false}
+          orientation='right'
+          axisLine={false}
+          tick={{ fill: '#9B9EAC', fontWeight: 500, fontSize: 14 }}
+          tickMargin={45}
+          minTickGap={27}
+        />
+        &lt;Tooltip content={CustomTooltip}
+        cursor={{ opacity: 0.4 }}
+         />
+        &lt;Legend // change styles in formatter for the Bar component text
+          verticalAlign='top'
+          align='right'
+          iconType={'circle'}
+          iconSize={8}
+          width={277}
+          height={25}
+          wrapperStyle={{ top: 35, right: 26 }}
+          formatter={(value) => {
+            return (
+              &lt;span style={{ color: '#74798c', fontSize: 14, fontWeight: 500 }}>
+                {value}
+              &lt;/span>
+            );
+          }}
+        />
+      &lt;Bar
             dataKey="kilogram" //la barre verticale celle en KG
             fill="#282D30" //sa couleur
             barSize={7} //taille
@@ -112,7 +146,6 @@ const Activity = ({ activity }) => {
           />
 
           &lt;Bar
-            yAxisId={1} //barre deuxième (celle à droite)
             dataKey="calories" //la barre horizontale en calorie
             fill="#E60000" // sa couleur
             barSize={7} // sa taille
@@ -120,40 +153,29 @@ const Activity = ({ activity }) => {
             unit=" Kcal" //unite
             name="Calories brûlées (kCal)"
           />
+        &lt;text
+          className='graphTitle'
+          x='5%'
+          y='15%'
+          width={147}
+          height={48}
+          textAnchor='start'
+          dominantBaseline='middle'
+          fill='#20253A'
+          style={{ fontWeight: 500 }}
+        >
+          Activité quotidienne{' '}
+        &lt;/text>
+      &lt;/BarChart>
+    &lt;/div>
+  );
+};
 
-          &lt;XAxis
-            dataKey="day"
-            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }} //taille et couleur de mesure du jour au dessous de la barre (unité jour)
-            tickLine={false}
-            tickSize={16}
-            stroke="#DEDEDE"
-          />
-
-          &lt;YAxis
-            yAxisId={0} // la barre de mesure la première
-            dataKey="kilogram" //donné en kg
-            stroke="#9B9EAC" //sa couleur
-            orientation="right" //son orientation à droite
-            axisLine={false}
-            tickLine={false}
-            tick={{ fill: '#9B9EAC', fontSize: '14', fontWeight: 500 }}
-            domain={['dataMin - 1', 'dataMax + 2']}
-          />
-          &lt;YAxis
-            yAxisId={1} //la barre de mesure la deuxième
-            dataKey="calories"
-            hide={true} //donné en calorie
-            domain={['dataMin - 100', 'dataMax + 100']} //mise en place la mesure en horizontale les calories
-          />
-        &lt;/BarChart>
-      &lt;/ResponsiveContainer>
-    &lt;/>
-  )
-}
-Activity.propTypes = {
-  activity: PropTypes.array.isRequired,
-}
-export default Activity
+export default DailyActivity;
+//Proptypes
+DailyActivity.propTypes = {
+  activityValues: PropTypes.array.isRequired,
+};
 </code></pre>
         </article>
     </section>
@@ -168,7 +190,7 @@ export default Activity
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Sun Oct 30 2022 20:20:30 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a> on Wed Nov 09 2022 01:47:33 GMT+0400 (heure normale de Maurice) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
