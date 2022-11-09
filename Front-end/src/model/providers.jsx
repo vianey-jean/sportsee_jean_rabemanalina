@@ -21,7 +21,7 @@ export async function headerUserData(userId) {
   // return mainDatas;  sans passage dans le MainDataFormater
 
   const userData = new MainDatasFormater(mainDatas);
-  console.log(userData.keyData.calorieCount);
+  //console.log(userData.keyData.calorieCount);
   return userData;
 }
 
@@ -34,7 +34,7 @@ export async function activitiesUserData(userId) {
   let activitiesDatas = {};
 
   activitiesDatas = await getActivitiesUserData(userId);
-  console.log(activitiesDatas);
+  //console.log(activitiesDatas);
   // return activitiesDatas;  sans passage dans le MainDataFormater
 
   const userActivitiesData = new ActivitiesDataFormater(activitiesDatas);
@@ -51,7 +51,7 @@ export async function userSessionsTimeData(userId) {
   let sessionsData = {};
 
   sessionsData = await GetUserAverageSessions(userId);
-  console.log(sessionsData);
+  //console.log(sessionsData);
   // return sessionsData;  sans passage dans le SessionsDataFormater
 
   const userAverageSessionsTimeData = new SessionsDataFormater(sessionsData);
@@ -68,10 +68,10 @@ export async function userPerformancesData(userId) {
   let performancesData = {};
 
   performancesData = await GetUserPerformances(userId);
-  console.log(performancesData);
+  //console.log(performancesData);
   // return performancesData;  sans passage dans le PerformancesDataFormater
 
   const userPerformancesData = new PerformancesDataFormater(performancesData);
-  console.log(userPerformancesData); // check the PerformancesDataFormater in console
+  //console.log(userPerformancesData); // check the PerformancesDataFormater in console
   return userPerformancesData;
 }

@@ -20,7 +20,7 @@ export const getMainUserData = async (userId) => {
 
     return mainUserData.data;
   } catch (error) {
-    console.log("sorry there's an error :", error);
+    //console.log("sorry there's an error :", error);
   }
 };
 
@@ -44,7 +44,7 @@ export const getActivitiesUserData = async (userId) => {
     // console.log(userActivitiesData.data);
     return userActivitiesData.data;
   } catch (error) {
-    console.log("sorry there's an error :", error);
+    //console.log("sorry there's an error :", error);
   }
 };
 
@@ -65,7 +65,7 @@ export const GetUserAverageSessions = async (userId) => {
     // console.log(averageSessionsTimeData.data);
     return averageSessionsTimeData.data;
   } catch (error) {
-    console.log("sorry there's an error :", error);
+    //console.log("sorry there's an error :", error);
   }
 };
 
@@ -83,10 +83,10 @@ export const GetUserPerformances = async (userId) => {
     }
     const response = await fetch(url);
     const performancesData = await response.json();
-    console.log(performancesData.data);
+    //console.log(performancesData.data);
     return performancesData.data;
   } catch (error) {
-    console.log("sorry there's an error :", error);
+    //console.log("sorry there's an error :", error);
   }
 };
 
@@ -104,9 +104,9 @@ export const GetUserScores = async (userId) => {
     }
     const response = await fetch(url);
     const performancesData = await response.json();
-    console.log(performancesData.data);
+    //.log(performancesData.data);
     return performancesData.data;
   } catch (error) {
-    console.log("sorry there's an error :", error);
+    //console.log("sorry there's an error :", error);
   }
 };

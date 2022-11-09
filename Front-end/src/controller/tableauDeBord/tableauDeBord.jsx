@@ -49,7 +49,7 @@ const Dashboard = () => {
         });
         setIsLoading(false);
       } catch (error) {
-        console.log("sorry, there's an error :", error);
+        //console.log("sorry, there's an error :", error);
         window.location = '/error';
       }
     })();
