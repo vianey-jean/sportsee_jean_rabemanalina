@@ -1,14 +1,13 @@
 /**
  * @class
- * @classdesc User Activities formater
+ * @classdesc Main user datas formater
  */
-
 export default class ActivitiesDataFormater {
-  /**
-   * assigns the values from an object to the properties of the class.
-   * @param {Object} sessions - user sessions datas
-   */
-
+   /**
+     * The function takes in an object, and then assigns the values of the object to the properties of
+     * the class.
+     * @param {Object} data - main user datas
+     */
   constructor({ sessions, userId }) {
     this.id = userId;
     this.sessions = sessions.map((session, index) => ({

@@ -4,11 +4,12 @@
  */
 export default class PerformancesDataFormater {
   /**
-   * The function takes in an object, and then assigns the values of the object to the properties of
-   * the class.
-   * @param {Object} kind - user kind of performance datas
-   * @param {Object} performances - performances datas
-   */
+     * The function takes in an object, and then assigns the values of the object to the properties of
+     * the class.
+     * @param {Object} userId - user id
+     * @param {Object} sessions - user sessions datas
+     */
+
 
   constructor(performances, kind) {
     this.id = performances.userId;

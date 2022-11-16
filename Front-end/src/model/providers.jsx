@@ -9,8 +9,9 @@ import SessionsDataFormater from './apiData/SessionsDataFormater';
 import PerformancesDataFormater from './apiData/PerformancesDataFormater';
 
 /**
- * @param userId - the id of the user
- * @returns An array of objects with user mainDatas
+ * It takes a userId, gets some data from an API, formats it, and returns it.
+ * @param userid - the id of the user
+ * @returns An array of objects with user main datas
  */
 
 export async function headerUserData(userId) {
@@ -44,7 +45,7 @@ export async function activitiesUserData(userId) {
 
 /**
  * @param userId - the id of the user
- * @returns An array of objects with user activities datas
+ * @returns An array of objects with user sessionaverage datas
  */
 
 export async function userSessionsTimeData(userId) {
